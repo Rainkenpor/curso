@@ -1,0 +1,41 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.zaionnet.curso"
+        },
+        "cordova-plugin-googleplus": {
+            "PACKAGE_NAME": "com.zaionnet.curso"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.zaionnet.curso"
+        },
+        "phonegap-plugin-push": {
+            "SENDER_ID": "85075801930",
+            "PACKAGE_NAME": "com.zaionnet.curso"
+        },
+        "com.megster.cordova.FileChooser": {
+            "PACKAGE_NAME": "com.zaionnet.curso"
+        },
+        "cordova-plugin-filepath": {
+            "PACKAGE_NAME": "com.zaionnet.curso"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.zaionnet.curso"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.zaionnet.curso"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.zaionnet.curso"
+        }
+    }
+}

@@ -1,0 +1,25 @@
+<div class="timeline timeline-sides">
+{{#each elementos}}
+  <div class="timeline-item">
+    <div class="timeline-item-date">{{dia}}<small>{{mes}}</small></div>
+    <div class="timeline-item-divider"></div>
+    <div class="timeline-item-content">
+        {{#each datos}}
+        <div class="timeline-item-inner">
+            <div style="width:100%;overflow:hidden;height: 22px">
+            {{#if tarea}}
+                <span class="icon-pencil-alt-1"></span>
+            {{else}}
+                <span class="icon-book-4"></span>
+            {{/if}}
+            {{titulo}}
+            </div>
+
+            {{descripcion}}
+        </div>
+        {{/each}}
+    </div>
+  </div>
+
+{{/each}}
+</div>

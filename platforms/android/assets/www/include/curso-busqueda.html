@@ -1,0 +1,33 @@
+<div style="height: 50px;width: calc(100% - 40px);">
+	<input type="text" class="form-control" placeholder="Búsqueda..." style="margin-left: 7px;margin-top: 5px">
+</div>
+<div style="overflow: auto;height: calc(100% -  230px)" id="curso-busqueda-listado">
+	 {{#each datos}}
+       <div class="card card-tareas" onclick="">
+       		<table width="100%">
+       			<tr>
+       				<td>
+       					<div style="padding:3px 10px;">
+				        	<h3 style="margin:0px">{{curso}}</h3>
+				        	<small class="small" style="margin-top:-10px">catedrático <b>{{usuario}}</b></small>
+				    	</div>
+       				</td>
+       				{{#if_compare asignado "==" 0}}
+       				<td width="70px" class="curso-busqueda-asignacion"  id_curs="{{id_curs}}" 
+       				style="background-color: #4CAF50;border-color:#4CAF50;font-size: 13px;color:white;text-align: center">	       			
+       						<span class="icon-direction-2"></span><br>
+			        		Solicitar
+       				</td>
+       				{{else}}
+       				<td width="70px" 
+       				style="background-color: #B0BEC5;border-color:#90A4AE;font-size: 13px;color:white;text-align: center">	      <span class="icon-ok-outline"></span><br> 			
+			        		Asignado
+       				</td>
+			    	{{/if_compare}}		
+       			</tr>	
+       		</table>
+	    	
+	    		
+	</div>  
+      {{/each}}
+</div>

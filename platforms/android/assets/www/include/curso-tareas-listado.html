@@ -1,0 +1,41 @@
+<!-- Popover -->
+        <div class="popover demo-popover">
+          <div class="popover-inner">
+            <div class="list-block">
+              <ul>
+                <li>
+                  <a href="#" onclick="modulo_curso_tareas_nuevo_normal()" class="item-content item-link">
+                    <div class="item-inner">
+                      <div class="item-title">Tarea Normal</div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" onclick="modulo_curso_tareas_nuevo_conceptos()" class="item-content item-link">
+                    <div class="item-inner">
+                      <div class="item-title">Tarea Glosario</div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {{#each datos}}
+        <div class="card card-tareas" id_tar="{{id_tar}}" onclick="modulo_curso_tareas_detalle({{id_tar}})">
+           <div class="card-header"> 
+                {{tarea}}
+            </div>
+            <div class="card-content">
+              <div class="card-content-inner">
+                {{descripcion}}
+              </div>
+              <div class="card-footer">
+                <span style="font-size: 14px;color: #F44336"> Vencimiento: {{finalizacion}}</span>
+              </div>
+            </div>
+        </div>
+
+        
+        {{/each}}
