@@ -1,8 +1,11 @@
-function cargar_archivo(archivo,codigo_archivo,codigo){
+function cargar_archivo(archivo,codigo_archivo,codigo,id_tar){
+
 
 // codigos
 // 3.2 => Tareas
 // 3.3 => adjuntos
+
+// id_tar {opcional}
 
 
 var nombre_archivo=archivo.split('/');
@@ -27,14 +30,16 @@ var nombre_archivo=nombre_archivo.pop();
       case "3.2":
         $$('.detalle-tarea .porcentaje').hide();
         var datos = {
-          opcion:   "curso_tarea_detalle_adjuntos",
+          opcion:   "curso_tareas__adjuntos",
           curso:    glob_curso_id,
           rol:      glob_rol_id,
           usuario:  Gusuario_id,
+          tarea: id_tar,
           agregar:  1,
           codigo_archivo:  r.response,
           archivo: nombre_archivo
         };
+        vconsole(datos);
         script(datos);
       case "3.3":
         if (r.response < 0){
@@ -42,7 +47,7 @@ var nombre_archivo=nombre_archivo.pop();
         }else{
           $$('.curso-adjunto .porcentaje').hide();
           var datos = {
-            opcion:   "curso_listado_adjuntos",
+            opcion:   "curso_adjuntos",
             curso:    glob_curso_id,
             rol:      glob_rol_id,
             usuario:  Gusuario_id,

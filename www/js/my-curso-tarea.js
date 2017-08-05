@@ -4,10 +4,10 @@ function modulo_curso_tareas(){
 	// $$('#curso_include_tareas_seleccion2').off('click');
 	$$('.card-tareas').off('taphold');
 	var datos = {
-	opcion:"curso_listado_tareas",
+	opcion:"curso_tareas",
 	curso:glob_curso_id,
-	rol:glob_rol_id}; 
-	
+	rol:glob_rol_id};
+
 	script(datos);
 	if (glob_rol_id==2)$$('.floating-button-curso').show();
 
@@ -26,12 +26,12 @@ function modulo_curso_tareas(){
 		                 myApp.confirm('¿Esta seguro(a) de eliminar la tarea?','Curso 2.0', function () {
 		                 	console.log(id_tar);
 		                 	var datos = {
-					opcion:"curso_listado_tareas",
+					opcion:"curso_tareas",
 					tarea:id_tar,
 					eliminar:1,
 					curso:glob_curso_id,
 					rol:glob_rol_id};
-				      script(datos); 
+				      script(datos);
 				      myApp.closeModal();
 				    },function(){
 				    	myApp.closeModal();
@@ -53,29 +53,38 @@ function modulo_curso_tareas_detalle(id_tar){
 
 
 	datos={tarea:info_tarea.tarea,curso:info_curso.curso,descripcion:info_tarea.descripcion,fecha_vencimiento:info_tarea.finalizacion,id_tar:info_tarea.id_tar};
-	
+
 	mainView.router.load({
       	template: myApp.templates.curso_detalle_tarea,
       	animatePages: true,
       	context: datos,
-      	reload: false, 
-    	});  
+      	reload: false,
+    	});
+
+			var datos = {
+				opcion:   "curso_tareas__adjuntos",
+				curso:    glob_curso_id,
+				rol:      glob_rol_id,
+				usuario:  Gusuario_id,
+				tarea: id_tar,
+			};
+			script(datos);
 }
 
 $$(document).on('click','.cursos.detalle-tarea .adjunto',function(){
 	var id_tar=$$(this).attr('id_tar');
-	var dia = Date.now()  
+	var dia = Date.now()
 	hexString = dia.toString(36);
 	// console.log(1);
 	// cargar_archivo('C:\\install.res.1036.dll',Gusuario_id+'_'+glob_curso_id+"_"+id_tar+'_'+hexString,"3.2");
 	fileChooser.open(function(uri) {
 		vconsole(uri);
-		window.FilePath.resolveNativePath(uri, 
+		window.FilePath.resolveNativePath(uri,
 			function(data){
 				vconsole("Directorio encontrado > "+data);
-				
-				vconsole('Archivo generado >>'+cargar_archivo(data,Gusuario_id+'_'+glob_curso_id+"_"+id_tar+'_'+hexString,'3.2'));
-			}, 
+
+				vconsole('Archivo generado >>'+cargar_archivo(data,Gusuario_id+'_'+glob_curso_id+"_"+id_tar+'_'+hexString,'3.2',id_tar));
+			},
 			function(data){
 				vconsole("error >> "+data);
 			});
@@ -103,7 +112,7 @@ function modulo_curso_tareas_nuevo_normal(){
 		    weekHeader: true,
 		     dateFormat: 'dd/MM/yyyy',
 		    dayNamesShort:dayNamesShort1,
-		    toolbarTemplate: 
+		    toolbarTemplate:
 		        '<div class="toolbar calendar-custom-toolbar">' +
 		            '<div class="toolbar-inner" style="background-color:#2196F3;color:white">' +
 		                '<div class="left">' +
@@ -127,7 +136,7 @@ function modulo_curso_tareas_nuevo_normal(){
 		    onMonthYearChangeStart: function (p) {
 		        $$('.calendar-custom-toolbar .center').text(monthNames[p.currentMonth] +', ' + p.currentYear);
 		    }
-		}); 
+		});
 		$$('.curso_include_tareas_normal_guardar').click(function(){
 			var vtarea=$$('#curso_include_tareas_normal_titulo').val();
 			var vdescripcion=$$('#curso_include_tareas_normal_descripcion').val();
@@ -143,23 +152,23 @@ function modulo_curso_tareas_nuevo_normal(){
 			tipo:'1',
 			descripcion:vdescripcion,
 			fecha_finalizacion:vfecha,
-			usuario:Gusuario_id}; 
+			usuario:Gusuario_id};
 			console.log(datos);
-			
+
 			myApp.showIndicator();
 			vconsole(script(datos,1));
 
 			var datos = {
-				opcion:"curso_listado_tareas",
+				opcion:"curso_tareas",
 				curso:glob_curso_id,
 				rol:glob_rol_id
-			}; 
+			};
 
 			script(datos);
 
 			if (glob_rol_id==2)$$('.floating-button-curso').show();
 		});
-	});	
+	});
 }
 
 
@@ -207,7 +216,7 @@ function modulo_curso_tareas_nuevo_conceptos(){
 		    weekHeader: true,
 		     dateFormat: 'dd/MM/yyyy',
 		    dayNamesShort:dayNamesShort1,
-		    toolbarTemplate: 
+		    toolbarTemplate:
 		        '<div class="toolbar calendar-custom-toolbar">' +
 		            '<div class="toolbar-inner" style="background-color:#2196F3;color:white">' +
 		                '<div class="left">' +
@@ -231,7 +240,7 @@ function modulo_curso_tareas_nuevo_conceptos(){
 		    onMonthYearChangeStart: function (p) {
 		        $$('.calendar-custom-toolbar .center').text(monthNames[p.currentMonth] +', ' + p.currentYear);
 		    }
-		}); 
+		});
 
 
 		$$('.curso_include_tareas_conceptos_guardar').click(function(){
@@ -253,15 +262,15 @@ function modulo_curso_tareas_nuevo_conceptos(){
 			descripcion:vdescripcion,
 			palabras:JSON.stringify(vpalabras),
 			fecha_finalizacion:vfecha,
-			usuario:Gusuario_id}; 
+			usuario:Gusuario_id};
 
 			console.log(script(datos,1));
 
 			var datos = {
-				opcion:"curso_listado_tareas",
+				opcion:"curso_tareas",
 				curso:glob_curso_id,
 				rol:glob_rol_id
-			}; 
+			};
 			script(datos);
 
 			if (glob_rol_id==2)$$('.floating-button-curso').show();

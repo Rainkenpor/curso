@@ -8,7 +8,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
-    
+
     <title>Curso</title>
 
     <link rel="stylesheet" href="lib/framework7/css/framework7.ios.min.css">
@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="css/fontello.css">
 
     <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
-        
+
 
 </head>
 
@@ -47,12 +47,12 @@
 
 
 
-    
-           <div id="app-status-ul" style="display: none" ></div>
+
+           <div id="app-status-ul"  ></div>
         </div>
     </div>
 
-   
+
     <!-- Views -->
     <div class="views">
         <!-- Your main view, should have "view-main" class -->
@@ -68,14 +68,14 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
-            
+
             <!-- Bottom Toolbar-->
-            <div class="toolbar toolbar-inferior"> 
+            <div class="toolbar toolbar-inferior">
                 <div class="toolbar-inner">
                     <table width="100%" style="border-spacing:0px">
-                        <tr>   
+                        <tr>
                             <td class="activo"><div id="btn-home"          class="icon-home-outline"></div></td>
                             <td><div id="btn-tarea"         class="icon-calendar-check-o"></div></td>
                             <td><div id="btn-curso"         class="icon-book-4"></div></td>
@@ -92,7 +92,7 @@
 <script type="text/template7" id="login">
     <div class="pages">
         <div data-page="tarea" class="page">
-        
+
             <div class="page-content" style="background-image:url('src/login.png'); background-size: cover" >
                  <!-- <div class="content-block-title">Inline with custom toolbar</div> -->
                     <div class="content-block">
@@ -100,12 +100,12 @@
                       <!-- <img src="src/logo.png" alt=""> -->
                         <!-- <div id="calendar-inline-container"></div> -->
                         <div style="font-size: 50px;color:white;text-align: center;margin-bottom:17px;text-shadow: 2px 2px 5px black">
-                        Curso    
+                        Curso
                         </div>
-                        
+
                         <div onclick="login()" style=" margin:auto;text-align:center;width:280px;padding:8px;height:32px;color:white;font-size: 20px;text-shadow: 1px 1px 3px black"><b>Iniciar sesión con google<b/></div>
                       </div>
-                    </div>   
+                    </div>
             </div>
         </div>
     </div>
@@ -116,7 +116,7 @@
         <!-- Page, "data-page" contains page name -->
         <div data-page="index" class="page">
             <!-- Scrollable page content -->
-            <div class="page-content"> 
+            <div class="page-content">
                 <div class="content-block content-block-inline encabezado">
                     <img class="fondo" src="src/fondo_pantalla.jpg"  alt="">
                     <div class="perfil">
@@ -134,12 +134,12 @@
                     </div>
                 </div>
 
-                <div class="contenido"><!-- 
+                <div class="contenido"><!--
                     <div class="notificacion conversacion">
                         <table width="100%">
                             <tr>
                                 <td width="65px">
-                                    <div class="icono icon-chat-empty"></div>        
+                                    <div class="icono icon-chat-empty"></div>
                                 </td>
                                 <td>
                                     <div class="usuario">Walter De Paz</div>
@@ -154,7 +154,7 @@
                         <table width="100%">
                             <tr>
                                 <td width="65px">
-                                    <div class="icono icon-chat-empty"></div>        
+                                    <div class="icono icon-chat-empty"></div>
                                 </td>
                                 <td>
                                     <div class="usuario">5 personas comentaron</div>
@@ -162,14 +162,14 @@
                                     <div class="mensaje">Me podrian ayudar en identificar ...</div>
                                 </td>
                             </tr>
-                        </table>    
+                        </table>
                     </div>
-                     
+
                     <div class="notificacion tarea">
                         <table width="100%">
                             <tr>
                                 <td width="65px">
-                                    <div class="icono icon-clock"></div>        
+                                    <div class="icono icon-clock"></div>
                                 </td>
                                 <td>
                                     <div class="titulo">Tarea No. 2</div>
@@ -177,13 +177,13 @@
                                     <div class="mensaje">Realizar una investigación sobre ...</div>
                                 </td>
                             </tr>
-                        </table>    
+                        </table>
                     </div>
                     <div class="notificacion conversacion">
                         <table width="100%">
                             <tr>
                                 <td width="65px">
-                                    <div class="icono icon-chat-empty"></div>        
+                                    <div class="icono icon-chat-empty"></div>
                                 </td>
                                 <td>
                                     <div class="usuario">Walter Ronquillo</div>
@@ -194,12 +194,12 @@
                         </table>
                     </div>
 
-                     
+
                     <div class="notificacion tarea">
                         <table width="100%">
                             <tr>
                                 <td width="65px">
-                                    <div class="icono icon-clock"></div>        
+                                    <div class="icono icon-clock"></div>
                                 </td>
                                 <td>
                                     <div class="titulo">Tarea No. 2</div>
@@ -207,10 +207,10 @@
                                     <div class="mensaje">Realizar una investigación sobre ...</div>
                                 </td>
                             </tr>
-                        </table>    
+                        </table>
                     </div>
 
-                    
+
 
                  --></div>
 
@@ -230,7 +230,7 @@
                       <div style="padding:10px; margin-right:-15px; width:auto">
                         <div id="calendar-inline-container"></div>
                       </div>
-                    </div>   
+                    </div>
             </div>
         </div>
     </div>
@@ -245,9 +245,9 @@
             <div class="titulo">Comentarios</div>
             <div class="page-content">
                  <div class="content-block content-block-inline foros" id="foros-base">
-                     
+
                  </div>
-                
+
                 <a href="#" class="floating-button floating-button-to-popover open-popover color-blue">
                     <i class="icon icon-plus"></i>
                 </a>
@@ -270,7 +270,7 @@
                         </div>
                       </a>
                     </li>
-                    
+
                   </ul>
                 </div>
               </div>
@@ -285,13 +285,13 @@
             <div class="titulo"><a href="#" class="back link"><i class="icon icon-back"></i></a> Comentarios - Nuevo</div>
             <div class="page-content">
                  <div class="content-block content-block-inline foros" id="foros-nuevo">
-                    
-                   
-                    
+
+
+
                 </div>
-           
+
             </div>
-            
+
         </div>
     </div>
 </script>
@@ -303,19 +303,19 @@
         <div class="pages">
             <div data-page="curso" class="page">
             <div class="titulo">Cursos</div>
-                <div class="page-content">                
+                <div class="page-content">
                     <div class="content-block content-block-inline cursos">
                     {{#each cursos}}
                            <div class="curso rol_{{id_rol}}" rol="{{id_rol}}">
                                 <div class="icono">
-                                    <span class="icon-book-1" ></span> 
+                                    <span class="icon-book-1" ></span>
                                 </div>
                                 <table width="100%" id_curs="{{id_curs}}">
                                     <tr>
                                         <td width="40px"></td>
                                         <td>
                                             <div class="titulo">{{curso}}</div>
-                                            <div class="cat">{{usuario}} 
+                                            <div class="cat">{{usuario}}
                                             </div>
                                         </td>
                                     </tr>
@@ -351,12 +351,12 @@
         </div>
     </script>
 
-    <script type="text/template7" id="curso_busqueda">    
+    <script type="text/template7" id="curso_busqueda">
         <div class="pages">
             <div data-page="curso_busqueda" class="page">
             <div class="titulo"> <a href="#" class="back link"><i class="icon icon-back"></i></a> Búsqueda de cursos</div>
                 <div class="page-content cursos busqueda">
-                    
+
                 </div>
             </div>
         </div>
@@ -364,7 +364,7 @@
     </script>
 
 
-    <script type="text/template7" id="curso_detalle">    
+    <script type="text/template7" id="curso_detalle">
         <div class="pages">
             <div data-page="curso_detalle" class="page">
             <div class="titulo"> <a href="#" class="back link"><i class="icon icon-back"></i></a> {{curso}}</div>
@@ -386,7 +386,7 @@
                     </table>
                 <div class="page-content cursos detalle">
                     <div class="contenido">
-                        
+
                     </div>
                 </div>
                  <a href="#" class="floating-button floating-button-curso floating-button-to-popover open-popover color-green" style="display: none">
@@ -397,7 +397,7 @@
 
     </script>
 
-    <script type="text/template7" id="curso_detalle_tarea">    
+    <script type="text/template7" id="curso_detalle_tarea">
         <div class="curso_detalle_tarea">
             <div data-page="curso_detalle_tarea" class="page">
             <div class="titulo">  <a href="#" class="back link"><i class="icon icon-back"></i></a>  {{curso}} <br><small style="font-size:17px;padding-left:35px;">{{tarea}}</small></div>
@@ -419,10 +419,11 @@
                                     <textarea  class="form-control" placeholder="Descripción" rows="4" style="resize:none;width: calc(100% - 22px)"></textarea>
 
                                 </td>
-                            </tr>  
+                            </tr>
                           </table>
                           <div class="porcentaje"><div class="avance"></div></div>
-                        </div>                         
+                        </div>
+                        <div id="listado_adjuntos"></div>
                     </div>
                 </div>
             </div>
@@ -445,7 +446,7 @@
     <script type="text/javascript" src="lib/framework7/js/framework7.min.js"></script>
     <script type="text/javascript" src="js/init-styles.js"></script>
     <script type="text/javascript" src="js/my-script.js"></script>
-    
+
     <script>
         // If we need to use custom DOM library, let's save it to $$ variable:
         var $$ = Dom7;
@@ -464,7 +465,7 @@
     <script type="text/javascript" src="js/my-comentario.js"></script>
     <script type="text/javascript" src="js/my-carga-archivo.js"></script>
     <script type="text/javascript" src="js/my-descarga-archivo.js"></script>
-    
+
 
 </body>
 

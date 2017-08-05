@@ -68,7 +68,7 @@
 }
 .encabezado .perfil{
 	top:60px;
-	right: 0px;	
+	right: 0px;
 	background-color: rgba(0,0,0,.2);
 }
 
@@ -168,7 +168,7 @@
 	margin:0px !important;
 }
 .panel-left .content-block #login #imagen{
-	height:100px; 
+	height:100px;
 	/*background-color: #2196F3;*/
 	background-image: url('https://i0.wp.com/www.elvinculodigital.com/wp-content/uploads/2016/05/material_desing_6.jpg');
 	background-size: cover;
@@ -231,7 +231,7 @@
 .cursos .curso .icono span{
 	font-size:40px;
 	color:#4CAF50;
-	transition: all 0.25s ease-in;	
+	transition: all 0.25s ease-in;
 }
 .cursos .curso.rol_2 .icono span{
 	/*font-size:40px;*/
@@ -355,6 +355,10 @@
 .timeline-item-content{
 	width: 100%;
 }
+ .timeline-item-inner{
+   height: 100px;
+   overflow: height: ;
+ }
 /*=============================================================================================================*/
 /*FOROS*/
 /*=============================================================================================================*/

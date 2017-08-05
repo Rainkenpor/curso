@@ -16,7 +16,7 @@ function modulo_curso_busqueda(){
      script(datos);     
 	// $$('.card-tareas').off('taphold');
 	// var datos = {
-	// opcion:"curso_listado_tareas",
+	// opcion:"curso_tareas",
 	// curso:glob_curso_id,
 	// rol:glob_rol_id}; 
 	// script(datos);
