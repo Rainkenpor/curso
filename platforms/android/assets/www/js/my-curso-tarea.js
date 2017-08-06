@@ -66,6 +66,7 @@ function modulo_curso_tareas_detalle(id_tar){
 				curso:    glob_curso_id,
 				rol:      glob_rol_id,
 				usuario:  Gusuario_id,
+				preload:  1,
 				tarea: id_tar,
 			};
 			script(datos);

@@ -434,3 +434,26 @@ input[type="search"] {
 	background-color: #4CAF50;
 	border-radius: 5px;
 }
+.card .titulo{
+	padding:3px 10px;
+	border-bottom:1px solid #ccc;
+	font-weight: bold;
+	color:#616161;
+}
+.card .sub{
+	font-size: 12px;
+	font-weight:normal;
+}
+.card .sub.info{
+	color:#2196F3;
+}
+.card .sub.danger{
+	color:#F44336;
+}
+.card .informacion{
+	padding:10px 10px;
+	border-bottom:1px solid #ccc;
+	overflow:hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}

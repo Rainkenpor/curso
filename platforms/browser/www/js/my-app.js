@@ -6,10 +6,10 @@ glob_page['tarea']=0;
 glob_page['curso']=0;
 glob_page['comentario']=0;
 
-Template7.global = { 
+Template7.global = {
   material: isMaterial,
-  ios: isIos, 
-}; 
+  ios: isIos,
+};
 
 
 Template7.registerHelper('if_compare', function (a, operator, b, options) {
@@ -23,7 +23,7 @@ Template7.registerHelper('if_compare', function (a, operator, b, options) {
         (operator === '>=' && a >= b) ||
         (operator === '<=' && a <= b)||
         (operator === '||' && a || b) ||
-        (operator === '&&' && a && b) 
+        (operator === '&&' && a && b)
         ) {
         match = true;
     }
@@ -45,10 +45,10 @@ tapHold: true,
   template7Pages: true,
   precompileTemplates: true,
   swipePanel: 'left',
-  swipePanelActiveArea: '30', 
+  swipePanelActiveArea: '30',
   swipeBackPage: true,
-  animateNavBackIcon: true, 
-  pushState: !!Framework7.prototype.device.os, 
+  animateNavBackIcon: true,
+  pushState: !!Framework7.prototype.device.os,
 });
 
 
@@ -67,7 +67,7 @@ var mainView = myApp.addView('.view-main', {
     // Because we want to use dynamic navbar, we need to enable it for this view:
     uniqueHistory:true,
     SwipeBackPage:true,
-  
+
 });
 
 
@@ -75,14 +75,26 @@ var mainView = myApp.addView('.view-main', {
 // Handle Cordova Device Ready Event
 $$(document).on('deviceready', function() {
     vconsole("Device is ready!");
+    var permissions = cordova.plugins.permissions;
+    permissions.requestPermission(permissions.READ_EXTERNAL_STORAGE, success, error);
+
+    function error() {
+      vconsole('Permiso de escritura erroneo');
+    }
+
+    function success( status ) {
+    if( !status.hasPermission ) error();
+    vconsole('Permiso de escritura success'+status);
+    }
+
     vconsole(FileTransfer);
-// myApp.showPreloader(''); 
+// myApp.showPreloader('');
     // setTimeout(function(){
     // registrar();
-          
+
     mueveReloj();
   // },5000);
-    
+
 });
 
 
@@ -97,9 +109,9 @@ $$(document).on('click','#btn-home',function(){
       template: myApp.templates.index,
       animatePages: false,
       // context: {carpetas: info,cursos:info_curso},
-      reload: true, 
-    });  
-    
+      reload: true,
+    });
+
 });
 
 
@@ -128,7 +140,7 @@ $$(document).on('pageInit', function (e) {
     if (v_comentario.indexOf(page.name)>-1) {glob_page['comentario']=1;$$("#btn-comentario").parents('td').addClass("activo");}
 
     if (page.name === 'index' || page.name === 'tarea' || page.name === 'curso' || page.name === 'comentario'){
-      
+
     }
 })
 
@@ -141,8 +153,8 @@ $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
 })
 
 function back_all(){
-   $$('.navbar-on-left').remove(); 
-    $$('.page-on-left').remove(); 
+   $$('.navbar-on-left').remove();
+    $$('.page-on-left').remove();
 
     var index   = mainView.history[0];
     var actual  = mainView.activePage.url;
@@ -152,24 +164,24 @@ function back_all(){
     mainView.router.back();
 }
 
-function mueveReloj(){ 
+function mueveReloj(){
     // vconsole(1);
-    momentoActual = new Date() 
-    hora = momentoActual.getHours() 
-    minuto = momentoActual.getMinutes() 
-    segundo = momentoActual.getSeconds() 
+    momentoActual = new Date()
+    hora = momentoActual.getHours()
+    minuto = momentoActual.getMinutes()
+    segundo = momentoActual.getSeconds()
 
-    str_segundo = new String (segundo) 
-    if (str_segundo.length == 1) 
-        segundo = "0" + segundo 
+    str_segundo = new String (segundo)
+    if (str_segundo.length == 1)
+        segundo = "0" + segundo
 
-    str_minuto = new String (minuto) 
-    if (str_minuto.length == 1) 
-        minuto = "0" + minuto 
+    str_minuto = new String (minuto)
+    if (str_minuto.length == 1)
+        minuto = "0" + minuto
 
-    str_hora = new String (hora) 
-    if (str_hora.length == 1) 
-        hora = "0" + hora 
+    str_hora = new String (hora)
+    if (str_hora.length == 1)
+        hora = "0" + hora
 
     if (hora>12){hora=hora-12;thora='pm'}else{thora='am';}
 
@@ -177,5 +189,27 @@ function mueveReloj(){
 
     $$('.hora').html(horaImprimible);
 
-    setTimeout("mueveReloj()",1000) 
-} 
+    setTimeout("mueveReloj()",1000)
+}
+
+
+function extension_archivo(archivo){
+    var ext=archivo.split('.').pop();
+    var extension='';
+    var icono='';
+
+    if (ext=='jpg' || ext=='jpeg'){  extension='image/jpeg'; icono='img'}
+    if (ext=='png' || ext=='gif' || ext=='bmp'){  extension='image/'+ext; icono="img";}
+    if (ext=='docx'){  extension='application/vnd.openxmlformats-officedocument.wordprocessingml.document'; icono="icon-file-word";}
+    if (ext=='xlsx'){  extension='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';icono="icon-file-excel";}
+    if (ext=='ppsx'){  extension='application/vnd.openxmlformats-officedocument.presentationml.slideshow';icono="icon-file-powerpoint";}
+    if (ext=='doc') { extension='application/msword';icono="icon-file-word";}
+    if (ext=='xls') { extension='application/vnd.ms-excel';icono="icon-file-excel";}
+    if (ext=='ppt') { extension='application/vnd.ms-powerpoint';icono="icon-file-powerpoint";}
+    if (ext=='pdf') { extension='application/pdf';icono="icon-file-pdf";}
+    if (ext=='aac') { extension='audio/x-aac';icono="icon-file-audio";}
+    if (ext=='mpga' || ext=='mp2' || ext=='mp2a' || ext=='mp3' || ext=='m2a' || ext=='m3a') { extension='audio/mpeg';icono="icon-file-audio";}
+
+    var devolver=({"ext":ext,"mdi":extension,"icono":icono});
+    return devolver;
+}

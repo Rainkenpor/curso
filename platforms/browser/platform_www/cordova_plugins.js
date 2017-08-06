@@ -248,6 +248,22 @@ module.exports = [
         "clobbers": [
             "window.FileTransfer"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-android-permissions/www/permissions-dummy.js",
+        "id": "cordova-plugin-android-permissions.Permissions",
+        "pluginId": "cordova-plugin-android-permissions",
+        "clobbers": [
+            "cordova.plugins.permissions"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-file-opener2/www/plugins.FileOpener2.js",
+        "id": "cordova-plugin-file-opener2.FileOpener2",
+        "pluginId": "cordova-plugin-file-opener2",
+        "clobbers": [
+            "cordova.plugins.fileOpener2"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -261,7 +277,9 @@ module.exports.metadata =
     "cordova-plugin-filepath": "1.0.2",
     "cordova-plugin-compat": "1.1.0",
     "cordova-plugin-file": "4.3.3",
-    "cordova-plugin-file-transfer": "1.6.3"
+    "cordova-plugin-file-transfer": "1.6.3",
+    "cordova-plugin-android-permissions": "1.0.0",
+    "cordova-plugin-file-opener2": "2.0.19"
 }
 // BOTTOM OF METADATA
 });

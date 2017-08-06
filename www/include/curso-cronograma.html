@@ -5,13 +5,15 @@
     <div class="timeline-item-divider"></div>
     <div class="timeline-item-content">
         {{#each datos}}
-        <div class="timeline-item-inner">
-            <div style="width:100%;overflow:hidden;height: 22px">
-            {{#if tarea}}
-                <span class="icon-pencil-alt-1"></span>
+            {{#if_compare tarea "==" "tar"}}
+            <div class="timeline-item-inner"    id_tar="{{codigo}}" onclick="modulo_curso_tareas_detalle({{codigo}})">
+                <div style="width:100%;overflow:hidden;height: 22px">
+                    <span class="icon-pencil-alt-1" ></span>
             {{else}}
-                <span class="icon-book-4"></span>
-            {{/if}}
+            <div class="timeline-item-inner" >
+                <div style="width:100%;overflow:hidden;height: 22px">
+                    <span class="icon-book-4"></span>
+            {{/if_compare}}
             <b>{{titulo}}</b>
             </div>
 

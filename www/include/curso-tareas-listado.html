@@ -23,19 +23,21 @@
         </div>
 
         {{#each datos}}
-        <div class="card card-tareas" id_tar="{{id_tar}}" onclick="modulo_curso_tareas_detalle({{id_tar}})">
-           <div class="card-header"> 
-                {{tarea}}
-            </div>
-            <div class="card-content">
-              <div class="card-content-inner">
-                {{descripcion}}
-              </div>
-              <div class="card-footer">
-                <span style="font-size: 14px;color: #F44336"> Vencimiento: {{finalizacion}}</span>
-              </div>
-            </div>
-        </div>
 
-        
+          <div class="card card-tareas"  id_tar="{{id_tar}}" onclick="modulo_curso_tareas_detalle({{id_tar}})">
+            <div class="titulo">
+                {{tarea}}
+                <div class="sub">vencimiento: <b>{{finalizacion}}</b></div>
+            </div>
+            <div class="informacion">
+                {{descripcion}}
+            </div>
+            <div style="padding:3px 10px;text-align:left">
+                
+                <span class="badge color-blue"><span class="icon-comment-6"></span> 00</span>
+                <span class="badge color-blue"><span class="icon-attach"></span> 00</span>
+            </div>
+          </div>
+
+
         {{/each}}

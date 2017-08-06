@@ -43,6 +43,14 @@
                         {
                             "xml": "<feature name=\"FileTransfer\"><param name=\"android-package\" value=\"org.apache.cordova.filetransfer.FileTransfer\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Permissions\"><param name=\"android-package\" value=\"com.android.plugins.Permissions\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"FileOpener2\"><param name=\"android-package\" value=\"io.github.pwlin.cordova.plugins.fileopener2.FileOpener2\" /></feature>",
+                            "count": 1
                         }
                     ],
                     "/widget": [
@@ -125,12 +133,16 @@
                         {
                             "xml": "<service android:exported=\"false\" android:name=\"com.adobe.phonegap.push.RegistrationIntentService\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<provider android:authorities=\"${applicationId}.opener.provider\" android:exported=\"false\" android:grantUriPermissions=\"true\" android:name=\"io.github.pwlin.cordova.plugins.fileopener2.FileProvider\"><meta-data android:name=\"android.support.FILE_PROVIDER_PATHS\" android:resource=\"@xml/opener_paths\" /></provider>",
+                            "count": 1
                         }
                     ],
                     "/*": [
                         {
                             "xml": "<uses-permission android:name=\"android.permission.READ_EXTERNAL_STORAGE\" />",
-                            "count": 1
+                            "count": 2
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
@@ -178,6 +190,12 @@
             "PACKAGE_NAME": "com.zaionnet.curso"
         },
         "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.zaionnet.curso"
+        },
+        "cordova-plugin-android-permissions": {
+            "PACKAGE_NAME": "com.zaionnet.curso"
+        },
+        "cordova-plugin-file-opener2": {
             "PACKAGE_NAME": "com.zaionnet.curso"
         }
     },
@@ -411,6 +429,22 @@
             "clobbers": [
                 "window.FileTransfer"
             ]
+        },
+        {
+            "id": "cordova-plugin-android-permissions.Permissions",
+            "file": "plugins/cordova-plugin-android-permissions/www/permissions.js",
+            "pluginId": "cordova-plugin-android-permissions",
+            "clobbers": [
+                "cordova.plugins.permissions"
+            ]
+        },
+        {
+            "id": "cordova-plugin-file-opener2.FileOpener2",
+            "file": "plugins/cordova-plugin-file-opener2/www/plugins.FileOpener2.js",
+            "pluginId": "cordova-plugin-file-opener2",
+            "clobbers": [
+                "cordova.plugins.fileOpener2"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -422,6 +456,8 @@
         "cordova-plugin-filepath": "1.0.2",
         "cordova-plugin-compat": "1.1.0",
         "cordova-plugin-file": "4.3.3",
-        "cordova-plugin-file-transfer": "1.6.3"
+        "cordova-plugin-file-transfer": "1.6.3",
+        "cordova-plugin-android-permissions": "1.0.0",
+        "cordova-plugin-file-opener2": "2.0.19"
     }
 }

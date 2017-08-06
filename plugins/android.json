@@ -28,6 +28,12 @@
         },
         "cordova-plugin-file-transfer": {
             "PACKAGE_NAME": "com.zaionnet.curso"
+        },
+        "cordova-plugin-android-permissions": {
+            "PACKAGE_NAME": "com.zaionnet.curso"
+        },
+        "cordova-plugin-file-opener2": {
+            "PACKAGE_NAME": "com.zaionnet.curso"
         }
     },
     "dependent_plugins": {

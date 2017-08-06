@@ -279,7 +279,7 @@ if ($conn->connect_error) {
 			$conn->multi_query($strQuery);
 		}
 
-		$strQuery = "select 'tar' tipo, tarea titulo,descripcion,fecha_finalizacion,
+		$strQuery = "select 'tar' tipo,id_tar codigo, tarea titulo,descripcion,fecha_finalizacion,
 						DATE_FORMAT(fecha_finalizacion,'%d') dia,
 						DATE_FORMAT(fecha_finalizacion,'%b') mes
 						from curs_tar
@@ -342,6 +342,7 @@ if ($conn->connect_error) {
 			$strQuery = "delete from curs_adj where id_adj=$v_adjunto";
 			$conn->multi_query($strQuery);
 		}
+		// agregando registros
 		if (isset($_POST['agregar'])){
 			$v_codarchivo=htmlspecialchars($_POST['codigo_archivo'],ENT_QUOTES);
 			$v_archivo=htmlspecialchars($_POST['archivo'],ENT_QUOTES);
@@ -365,9 +366,9 @@ if ($conn->connect_error) {
             				from curs_adj a, admin_usu b
             				where a.id_usu=b.id_usu and a.id_curs=$v_curso and a.id_tar=$v_tarea and a.id_usu=$v_usuario " ;
     }else{
-      $strQuery = "select a.*,DATE_FORMAT(a.fecha_creacion,'%d/%m/%Y') creacion,b.usuario
-                  from curs_adj a, admin_usu b
-                  where a.id_usu=b.id_usu and a.id_curs=$v_curso and a.id_usu=$v_usuario" ;
+      $strQuery = "select a.*,a1.tarea titulo, DATE_FORMAT(if(a.id_tar=0,a.fecha_creacion,a1.fecha_finalizacion),'%d/%m/%Y') fecha,b.usuario
+                  from curs_adj a left join curs_tar a1 on a.id_tar = a1.id_tar, admin_usu b
+                  where a.id_usu=b.id_usu and a.id_curs=$v_curso and a.id_usu=$v_usuario order by titulo,fecha" ;
     }
 
 		if ($conn->multi_query($strQuery)){

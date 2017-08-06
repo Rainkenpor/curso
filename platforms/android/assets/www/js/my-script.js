@@ -3,7 +3,13 @@ function script(datos,devolver){
 vconsole('>INICIANDO SCRIPT<');
 
 // myApp.showPreloader();
-myApp.showIndicator();
+
+if (datos.preload){
+  if (datos.opcion=='curso_tareas__adjuntos')  $$('.cursos.detalle-tarea #listado_adjuntos').html('<span class="preloader"></span>');
+}else{
+  myApp.showIndicator();
+}
+
 v_async=true;
 
 var glob_resp;
@@ -118,7 +124,7 @@ function script_carga(opcion){
           $$.get('include/curso-cronograma.html', function (data){
             var compiledTemplate = Template7.compile(data);
             var array=JSON.parse(localStorage.getItem('cursos_cronograma_'+datos.curso));
-            console.log(array);
+            
             var elementos=[];
             var t_mes=0;var t_dia=0;var pos_ant=0;
             for (a in array){
@@ -129,13 +135,15 @@ function script_carga(opcion){
                 elementos[a]['mes']=array[a].mes;
                 elementos[a]['dia']=array[a].dia;
                 pos_ant=a;
-                if (array[a].tipo=='tar'){datos_crono['tarea']=1;}else{datos_crono['tarea']=0;}
+                datos_crono['codigo']=array[a].codigo;
+                datos_crono['tarea']=array[a].tipo;
                 datos_crono['titulo']=array[a].titulo;
                 datos_crono['descripcion']=array[a].descripcion;
                 elementos[pos_ant]['datos'].push(datos_crono);
               }else{
                 datos_crono=[];
-                if (array[a].tipo=='tar'){datos_crono['tarea']=1;}else{datos_crono['tarea']=0;}
+                datos_crono['codigo']=array[a].codigo;
+                datos_crono['tarea']=array[a].tipo;
                 datos_crono['titulo']=array[a].titulo;
                 datos_crono['descripcion']=array[a].descripcion;
                 elementos[pos_ant]['datos'].push(datos_crono);
@@ -144,7 +152,7 @@ function script_carga(opcion){
               t_dia=array[a].dia;
             }
             var context_curso = {"elementos":elementos};
-            console.log(context_curso);
+            
             $$('.cursos.detalle .contenido').html(compiledTemplate(context_curso));
           });
         }else{
@@ -165,15 +173,11 @@ function script_carga(opcion){
 
       if (opcion=='curso_tareas__adjuntos'){
         if (localStorage.getItem('curso_tareas__adjuntos_'+datos.tarea)){
-          // $$.get('include/curso-adjuntos-listado.html',function(data){
-            // var compiledTemplate = Template7.compile(data);
             var array=JSON.parse(localStorage.getItem('curso_tareas__adjuntos_'+datos.tarea));
             $$('.cursos.detalle-tarea #listado_adjuntos').html('');
             for (a in array){
                 $$('.cursos.detalle-tarea #listado_adjuntos').append('<div class="caja" cod_archivo="'+array[a].codigo_archivo+'">'+array[a].nombre_archivo+'</div>' );
             }
-
-          // });
         }else{
           $$('.cursos.detalle-tarea #listado_adjuntos').html('Sin información de adjuntos');
         }
@@ -181,14 +185,67 @@ function script_carga(opcion){
 
       if (opcion=='curso_adjuntos'){
         if (localStorage.getItem('cursos_adjuntos_'+datos.curso)){
+          array=JSON.parse(localStorage.getItem('cursos_adjuntos_'+datos.curso));
+          console.log(array);
+          v_titulo='';v_fecha='';
+          datos=[];
+          archivos=[];
+
+          for (arr in array){
+            if (array[arr].titulo!=v_titulo){
+
+              if (archivos.length>0) datos.push({"titulo":titulo,"fecha":array[arr].fecha,"id_adj":array[arr].id_adj,"tipo":tipo,"id_tipo":id_tipo,"archivos":archivos});
+
+              // titulos
+              titulo=array[arr].titulo;
+              if (titulo=='' || titulo == null )titulo='Biblioteca';
+              if (array[arr].id_tar>0) titulo='Tarea - '+titulo;
+              // tipo
+              if(array[arr].id_tar>0){ 
+                tipo="tar";
+              }else if(array[arr].id_tem>0){
+                tipo="tem";
+              }else{
+                tipo='biblioteca';
+              }
+              // id tipo
+              if(array[arr].id_tar>0){ 
+                id_tipo=array[arr].id_tar;
+              }else if(array[arr].id_tem>0){
+                id_tipo=array[arr].id_tem;
+              }else{
+                id_tipo=0;
+              }
+              // icono
+              var extension=extension_archivo(array[arr].codigo_archivo);
+              var icono='<span style="font-size:25px" class="'+ extension.icono+'">';
+              if (extension.icono=='img')icono='<img src="https://zaionnet.000webhostapp.com/carga/'+array[arr].codigo_archivo+'" alt="" height="25px" width="25px">';
+              // insertando datos de archivos si ya existieran
+              
+              archivos=[];
+              archivos.push({"codigo":array[arr].codigo_archivo,"nombre": array[arr].nombre_archivo,"icono":icono,"usuario":array[arr].usuario});
+            }else{
+              // icono
+              var extension=extension_archivo(array[arr].codigo_archivo);
+              var icono='<span style="font-size:25px" class="'+ extension.icono+'">';
+              if (extension.icono=='img')icono='<img src="https://zaionnet.000webhostapp.com/carga/'+array[arr].codigo_archivo+'" alt="" height="25px" width="25px">';
+              archivos.push({"codigo":array[arr].codigo_archivo,"nombre": array[arr].nombre_archivo,"icono":icono,"usuario":array[arr].usuario});
+            }
+            v_titulo=array[arr].titulo;
+            v_fecha=array[arr].fecha;
+          }
+          if (archivos.length>0) if (archivos.length>0) datos.push({"titulo":titulo,"fecha":array[arr].fecha,"id_adj":array[arr].id_adj,"tipo":tipo,"id_tipo":id_tipo,"usuario":array[arr].usuario,"archivos":archivos});
+
+          console.log(datos);
+
           $$.get('include/curso-adjuntos-listado.html',function(data){
             var compiledTemplate = Template7.compile(data);
-            $$('.cursos.detalle .contenido').html(compiledTemplate({"datos":JSON.parse(localStorage.getItem('cursos_adjuntos_'+datos.curso)) }));
+            $$('.cursos.detalle .contenido').html(compiledTemplate({"datos":datos }));
           });
         }else{
           $$('.cursos.detalle .contenido').html('Sin información de adjuntos');
         }
       }
-}
+  }
 
 }
