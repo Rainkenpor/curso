@@ -61,11 +61,11 @@ if ($conn->connect_error) {
 		$v_usuario=$_POST['usu'];
 		$v_correo=htmlspecialchars($_POST['email'],ENT_QUOTES);
 		$v_imagen=$_POST['imagen'];
-		$strQuery = "insert into admin_usu (id_tiplog,id_login,usuario,nombre,correo,imagen) ".
-                            " values (1,'$v_id','$v_usuario','$v_usuario','$v_correo','$v_imagen')  ON DUPLICATE KEY UPDATE entrada=entrada+1";
+		$strQuery = "insert into admin_usu (id_tiplog,id_login,usuario,nombre,correo,imagen,id_est) ".	
+                            " values (1,'$v_id','$v_usuario','$v_usuario','$v_correo','$v_imagen',1)  ON DUPLICATE KEY UPDATE entrada=entrada+1";
 
 	  	$conn->multi_query($strQuery);
-	  	echo 1;
+	  	echo $strQuery;
 	}
 	if ($v_opcion=='registro_facebook'){
 		$v_usuario=$_POST['usu'];
@@ -108,7 +108,7 @@ if ($conn->connect_error) {
 		$strQuery = "insert into admin_usu_disp (codigo,id_usu) ".
 								"values ('$v_dispositivo',$v_usuario)  ON DUPLICATE KEY UPDATE num_entrada=num_entrada+1";
 	  	$conn->multi_query($strQuery);
-		echo $strQuery;
+		echo 1;
 	}
 
 
@@ -198,17 +198,17 @@ if ($conn->connect_error) {
 			echo 'Debe de ingresar el titulo de la tarea';
 		}
 	}
-
-
+// ================================================================================================================================================
+// ================================================================================================================================================
 	if ($v_opcion=='curso_listado'){
 		$v_usuario=htmlspecialchars($_POST['usuario'],ENT_QUOTES);
 		$v_encontrado=0;
 
 		$strQuery = "
 		select a.*,c.*,b.id_rol,
-			(select count(*) from curs_tem where curs_tem.id_curs=a.id_curs) as conteo_tema,
-			(select count(*) from curs_tar where curs_tar.id_curs=a.id_curs) as conteo_tarea,
-			(select count(*) from curs_adj where curs_adj.id_curs=a.id_curs) as conteo_adjunto
+			lpad((select count(*) from curs_tem where curs_tem.id_curs=a.id_curs),2,'0') as conteo_tema,
+			lpad((select count(*) from curs_tar where curs_tar.id_curs=a.id_curs),2,'0') as conteo_tarea,
+			lpad((select count(*) from curs_adj where curs_adj.id_curs=a.id_curs),2,'0') as conteo_adjunto
 		from
 			curs_nom a,curs_asig b, admin_usu c
 		where
@@ -232,6 +232,34 @@ if ($conn->connect_error) {
 			echo json_encode($data);
 		}
 	}
+
+	if ($v_opcion=='inicio_perfil'){
+		$v_usuario=htmlspecialchars($_POST['usuario'],ENT_QUOTES);
+		$v_encontrado=0;
+
+		$strQuery = "
+		select *
+		from
+			admin_usu
+		where
+			id_usu=$v_usuario" ;
+		if ($conn->multi_query($strQuery)){
+			if ($result=$conn->store_result()){
+				while($row=$result->fetch_assoc()){
+					$data[] = json_encode($row);
+					$v_encontrado=1;
+				}
+				$result->free();
+			}
+		}
+		if ($v_encontrado==0){
+			echo 0;
+		}else{
+			echo json_encode($data);
+		}
+	}
+// ================================================================================================================================================
+// ================================================================================================================================================
 
 	if ($v_opcion=='curso_busqueda'){
 		$v_usuario=htmlspecialchars($_POST['usuario'],ENT_QUOTES);
@@ -268,7 +296,7 @@ if ($conn->connect_error) {
 
 
 	if ($v_opcion=='curso_cronograma'){
-		$v_curso=htmlspecialchars($_POST['curso'],ENT_QUOTES);
+		$v_curso=htmlspecialchars($_POST['id'],ENT_QUOTES);
 		$v_encontrado=0;
 
 		if (isset($_POST['eliminar'])){
@@ -302,7 +330,7 @@ if ($conn->connect_error) {
 	}
 
 	if ($v_opcion=='curso_tareas'){
-		$v_curso=htmlspecialchars($_POST['curso'],ENT_QUOTES);
+		$v_curso=htmlspecialchars($_POST['id'],ENT_QUOTES);
 		$v_encontrado=0;
 
 		if (isset($_POST['eliminar'])){
@@ -314,6 +342,35 @@ if ($conn->connect_error) {
 		}
 
 		$strQuery = "select *,DATE_FORMAT(fecha_finalizacion,'%d/%m/%Y') finalizacion from curs_tar where id_curs=$v_curso order by fecha_finalizacion desc" ;
+		if ($conn->multi_query($strQuery)){
+			if ($result=$conn->store_result()){
+				while($row=$result->fetch_assoc()){
+					$data[] = json_encode($row);
+					$v_encontrado=1;
+				}
+				$result->free();
+			}
+		}
+		if ($v_encontrado==0){
+			echo 0;
+		}else{
+			echo json_encode($data);
+		}
+	}
+
+	if ($v_opcion=='curso_tareasdet'){
+		$v_tarea=htmlspecialchars($_POST['id'],ENT_QUOTES);
+		$v_encontrado=0;
+
+		if (isset($_POST['eliminar'])){
+			$tarea=$_POST['tarea'];
+			$strQuery = "delete from curs_tar_glos where id_tar=$tarea";
+			$conn->multi_query($strQuery);
+			$strQuery = "delete from curs_tar where id_tar=$tarea";
+			$conn->multi_query($strQuery);
+		}
+
+		$strQuery = "select * from curs_tar where id_tar=$v_tarea" ;
 		if ($conn->multi_query($strQuery)){
 			if ($result=$conn->store_result()){
 				while($row=$result->fetch_assoc()){

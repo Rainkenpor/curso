@@ -30,41 +30,34 @@
     <!-- Panels overlay-->
     <div class="panel-overlay"></div>
     <!-- Left panel with reveal effect-->
-    <div class="panel panel-left panel-reveal">
-        <div class="content-block">
-
-
-
-        <div id="login"  class="blink">
-            <div id="imagen">
-                <span class="image-temp icon-user"></span>
-                <img id="image"  src="" />
-                <span class="usuario">Iniciar Sesión</span>
-            </div>
-            <button class="button button-fill color-red" onclick="logout()">Salir</button>
-            <div id="feedback"></div>
-          </div>
-
-
-
-
-           <div id="app-status-ul"  ></div>
-        </div>
-    </div>
-
 
     <!-- Views -->
     <div class="views">
         <!-- Your main view, should have "view-main" class -->
         <div class="view view-main">
 
+
             <!-- Top Navbar-->
             <div class="pages">
                 <!-- Page, "data-page" contains page name -->
                 <div data-page="index" class="page">
+
                     <!-- Scrollable page content -->
                     <div class="page-content">
-                        <div class="content-block"></div>
+
+                        <div class="content-block">
+
+                            <div class="swiper-container swiper-container-menu">
+                                <div class="swiper-wrapper">
+                                  <div class="swiper-slide" name='inicio' include='base-inicio.html' ></div>
+                                  <div class="swiper-slide" name='evento' include='base-evento.html'></div>
+                                  <div class="swiper-slide" name='curso' include='base-curso.html'  ></div>
+                                  <div class="swiper-slide" name='favorito' include='base-favorito.html'></div>
+                                  <div class="swiper-slide" name='comentario' include='base-comentario.html'></div>
+                                </div>
+                                <!-- <div class="swiper-pagination"></div> -->
+                              </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -76,362 +69,47 @@
                 <div class="toolbar-inner">
                     <table width="100%" style="border-spacing:0px">
                         <tr>
-                            <td class="activo"><div id="btn-home"          class="icon-home-outline"></div></td>
-                            <td><div id="btn-tarea"         class="icon-calendar-check-o"></div></td>
-                            <td><div id="btn-curso"         class="icon-book-4"></div></td>
-                            <td><div id="btn-destacado"     class="icon-star"></div></td>
-                            <td><div id="btn-comentario"    class="icon-comment-6"></div></td>
+                            <td class="activo"><div id="btn-home" index="0" class="icon-home-outline"></div></td>
+                            <td><div id="btn-tarea"         index="1" class="icon-calendar-check-o"></div></td>
+                            <td><div id="btn-curso"         index="2" class="icon-book-4"></div></td>
+                            <td><div id="btn-destacado"     index="3" class="icon-star"></div></td>
+                            <td><div id="btn-comentario"    index="4" class="icon-comment-6"></div></td>
                         </tr>
                     </table>
                 </div>
             </div>
-        </div>
-    </div>
 
 
-<script type="text/template7" id="login">
-    <div class="pages">
-        <div data-page="tarea" class="page">
-
-            <div class="page-content" style="background-image:url('src/login.png'); background-size: cover" >
+            <div class="login">
                  <!-- <div class="content-block-title">Inline with custom toolbar</div> -->
-                    <div class="content-block">
-                      <div style="padding:10px; margin-right:-15px; width:auto">
+                  
+                      <div style="padding:10px;  width:auto">
                       <!-- <img src="src/logo.png" alt=""> -->
                         <!-- <div id="calendar-inline-container"></div> -->
-                        <div style="font-size: 50px;color:white;text-align: center;margin-bottom:17px;text-shadow: 2px 2px 5px black">
+                        <div style="text-align: center;margin-top: 20px">
+                            <img src="src/logo_login.png" height="150px" alt="">    
+                        </div>
+                        
+                        <div style="font-size: 35px;color:#607D8B;text-align: center;margin-bottom:17px;font-weight:bold">
                         Curso
                         </div>
 
-                        <div onclick="login()" style=" margin:auto;text-align:center;width:280px;padding:8px;height:32px;color:white;font-size: 20px;text-shadow: 1px 1px 3px black"><b>Iniciar sesión con google<b/></div>
+                        <div onclick="login()" class="google"> 
+                                <span class="icon-google" style="padding-right: 5px;border-right:2px solid white;margin-right: 3px"></span>
+                                Iniciar sesión con Google</div>
                       </div>
-                    </div>
-            </div>
-        </div>
-    </div>
-</script>
-
-<script type="text/template7" id="index">
-    <div class="pages">
-        <!-- Page, "data-page" contains page name -->
-        <div data-page="index" class="page">
-            <!-- Scrollable page content -->
-            <div class="page-content">
-                <div class="content-block content-block-inline encabezado">
-                    <img class="fondo" src="src/fondo_pantalla.jpg"  alt="">
-                    <div class="perfil">
-                        <span class="icon-user"></span>
-                        <br>
-                        <span style="font-size: 26px">Perfil</span>
-                    </div>
-                    <div class="eventos">
-                        <span class=" icon-calendar-check-o"></span>
-                        <br>
-                        <span>06</span>
-                    </div>
-                    <div class="pantalla">
-                        <span class="hora"></span>
-                    </div>
-                </div>
-
-                <div class="contenido">
-
-                <!--
-                    <div class="notificacion conversacion">
-                        <table width="100%">
-                            <tr>
-                                <td width="65px">
-                                    <div class="icono icon-chat-empty"></div>
-                                </td>
-                                <td>
-                                    <div class="usuario">Walter De Paz</div>
-                                    <div class="curso">Sistemas Operativos Abiertos - Curso No. 2</div>
-                                    <div class="mensaje">Me podrian ayudar en identificar ...</div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-
-                    <div class="notificacion conversacion">
-                        <table width="100%">
-                            <tr>
-                                <td width="65px">
-                                    <div class="icono icon-chat-empty"></div>
-                                </td>
-                                <td>
-                                    <div class="usuario">5 personas comentaron</div>
-                                    <div class="curso">Introducción a los sistemas de computación - Curso No. 1</div>
-                                    <div class="mensaje">Me podrian ayudar en identificar ...</div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-
-                    <div class="notificacion tarea">
-                        <table width="100%">
-                            <tr>
-                                <td width="65px">
-                                    <div class="icono icon-clock"></div>
-                                </td>
-                                <td>
-                                    <div class="titulo">Tarea No. 2</div>
-                                    <div class="curso">Sistemas Operativos Abiertos</div>
-                                    <div class="mensaje">Realizar una investigación sobre ...</div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="notificacion conversacion">
-                        <table width="100%">
-                            <tr>
-                                <td width="65px">
-                                    <div class="icono icon-chat-empty"></div>
-                                </td>
-                                <td>
-                                    <div class="usuario">Walter Ronquillo</div>
-                                    <div class="curso">Sistemas Operativos Abiertos - Curso No. 2</div>
-                                    <div class="mensaje">Me podrian ayudar en identificar ...</div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-
-
-                    <div class="notificacion tarea">
-                        <table width="100%">
-                            <tr>
-                                <td width="65px">
-                                    <div class="icono icon-clock"></div>
-                                </td>
-                                <td>
-                                    <div class="titulo">Tarea No. 2</div>
-                                    <div class="curso">Sistemas Operativos Abiertos</div>
-                                    <div class="mensaje">Realizar una investigación sobre ...</div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-
-
-
-                 --></div>
-
-             </div>
-        </div>
-    </div>
-</script>
-
-<script type="text/template7" id="tarea">
-    <div class="pages">
-        <div data-page="tarea" class="page">
-        <div class="titulo">Eventos</div>
-            <div class="page-content">
-                 <div class="content-block-title">
-                 </div>
-                    <div class="content-block">
-                      <div style="padding:10px; margin-right:-15px; width:auto">
-                        <div id="calendar-inline-container"></div>
+                      <div style="color:#E0E0E0;margin-top:10px" id="login_console">
+                          
                       </div>
-                    </div>
-            </div>
-        </div>
-    </div>
-</script>
-
-<!-- ==================================================================================================== -->
-<!-- Comentarios -->
-<!-- ==================================================================================================== -->
-<script type="text/template7" id="comentario">
-    <div class="pages">
-        <div data-page="comentario" class="page">
-            <div class="titulo">Comentarios</div>
-            <div class="page-content">
-                 <div class="content-block content-block-inline foros" id="foros-base">
-
-                 </div>
-
-                <a href="#" class="floating-button floating-button-to-popover open-popover color-blue">
-                    <i class="icon icon-plus"></i>
-                </a>
-            </div>
-            <div class="popover demo-popover">
-              <div class="popover-inner">
-                <div class="list-block">
-                  <ul>
-                    <li>
-                      <a href="#" class="item-content item-link foro-nuevo">
-                        <div class="item-inner">
-                          <div class="item-title">Nuevo tema</div>
-                        </div>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" class="item-content item-link foro-busqueda">
-                        <div class="item-inner">
-                          <div class="item-title">Busqueda</div>
-                        </div>
-                      </a>
-                    </li>
-
-                  </ul>
-                </div>
-              </div>
-            </div>
-        </div>
-    </div>
-</script>
-
-<script type="text/template7" id="comentario_nuevo">
-    <div class="pages">
-        <div data-page="comentario_nuevo" class="page">
-            <div class="titulo"><a href="#" class="back link"><i class="icon icon-back"></i></a> Comentarios - Nuevo</div>
-            <div class="page-content">
-                 <div class="content-block content-block-inline foros" id="foros-nuevo">
-
-
-
-                </div>
-
+                    
             </div>
 
         </div>
     </div>
-</script>
-
-<!-- ==================================================================================================== -->
-<!-- CURSO -->
-<!-- ==================================================================================================== -->
-    <script type="text/template7" id="curso">
-        <div class="pages">
-            <div data-page="curso" class="page">
-            <div class="titulo">Cursos</div>
-                <div class="page-content">
-                    <div class="content-block content-block-inline cursos">
-                    {{#each cursos}}
-                           <div class="curso rol_{{id_rol}}" rol="{{id_rol}}">
-                                <div class="icono">
-                                    <span class="icon-book-1" ></span>
-                                </div>
-                                <table width="100%" id_curs="{{id_curs}}">
-                                    <tr>
-                                        <td width="40px"></td>
-                                        <td>
-                                            <div class="titulo">{{curso}}</div>
-                                            <div class="cat">{{usuario}}
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </table>
-                           </div>
-                    {{else}}
-                        <div style="width: 100%;height: 50px;text-align: center;font-size: 23px">Sin cursos</div>
-                    {{/each}}
-
-                    </div>
-                    <a href="#" class="floating-button floating-button-to-popover open-popover color-blue">
-                        <i class="icon icon-plus"></i>
-                    </a>
-                </div>
-
-                <div class="popover demo-popover">
-                  <div class="popover-inner">
-                    <div class="list-block">
-                      <ul>
-                        <li>
-                          <a href="#" class="item-content item-link curso-busqueda">
-                            <div class="item-inner">
-                              <div class="item-title">Búsqueda de cursos</div>
-                            </div>
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-            </div>
-        </div>
-    </script>
-
-    <script type="text/template7" id="curso_busqueda">
-        <div class="pages">
-            <div data-page="curso_busqueda" class="page">
-            <div class="titulo"> <a href="#" class="back link"><i class="icon icon-back"></i></a> Búsqueda de cursos</div>
-                <div class="page-content cursos busqueda">
-
-                </div>
-            </div>
-        </div>
-
-    </script>
 
 
-    <script type="text/template7" id="curso_detalle">
-        <div class="pages">
-            <div data-page="curso_detalle" class="page">
-            <div class="titulo"> <a href="#" class="back link"><i class="icon icon-back"></i></a> {{curso}}</div>
-             <table class="cursos-detalle" width="100%" style="border-spacing: 0px">
-                        <tr>
-                            <td width="25%">
-                                <div class="opcion activo" opcion="1">Cronograma</div>
-                            </td>
-                            <td width="25%">
-                                <div class="opcion" opcion="2">Temas</div>
-                            </td>
-                            <td width="25%">
-                                <div class="opcion" opcion="3">Tareas</div>
-                            </td>
-                            <td width="25%">
-                                <div class="opcion" opcion="4">Adjuntos</div>
-                            </td>
-                        </tr>
-                    </table>
-                <div class="page-content cursos detalle">
-                    <div class="contenido">
 
-                    </div>
-                </div>
-                 <a href="#" class="floating-button floating-button-curso floating-button-to-popover open-popover color-green" style="display: none">
-                    <i class="icon-plus" style="line-height: 60px;margin-left:7px;font-size: 30px"></i>
-                  </a>
-            </div>
-        </div>
 
-    </script>
-
-    <script type="text/template7" id="curso_detalle_tarea">
-        <div class="curso_detalle_tarea">
-            <div data-page="curso_detalle_tarea" class="page">
-            <div class="titulo">  <a href="#" class="back link"><i class="icon icon-back"></i></a>  {{curso}} <br><small style="font-size:17px;padding-left:35px;">{{tarea}}</small></div>
-                <div class="page-content cursos detalle-tarea">
-                    <div class="contenido">
-                        <div class="titulo">Descripción</div>
-                        <div class="caja">{{descripcion}}</div>
-                        <div class="titulo">Fecha Vencimiento</div>
-                        <div class="caja">{{fecha_vencimiento}}</div>
-                        <div class="titulo">Adjunto</div>
-                        <div class="caja">
-                          <table width="100%;">
-                            <tr>
-                                <td width="25%" style="text-align: center" class="adjunto" id_tar="{{id_tar}}">
-                                    <span class=" icon-attach-6" style="font-size:35px"></span>
-                                    <br><small style="font-size:11px">Adjuntar Archivo</small>
-                                </td>
-                                <td width="75%">
-                                    <textarea  class="form-control" placeholder="Descripción" rows="4" style="resize:none;width: calc(100% - 22px)"></textarea>
-
-                                </td>
-                            </tr>
-                          </table>
-                          <div class="porcentaje"><div class="avance"></div></div>
-                        </div>
-                        <div id="listado_adjuntos"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </script>
 
 
 
@@ -453,10 +131,20 @@
         // If we need to use custom DOM library, let's save it to $$ variable:
         var $$ = Dom7;
     </script>
-    <script type="text/javascript" src="js/my-login.js"></script>
+    
+    
+    <script type="text/javascript" src="js/my-inicialize.js"></script>
+    <script type="text/javascript" src="js/base-inicio.js"></script>
+     <script>
+    for(key in localStorage) {localStorage.removeItem(key);};
+    var Gusuario_id=183;
+    $$('.login').hide();
+    start(); 
+    </script>  
+    <!-- <script type="text/javascript" src="js/my-login.js"></script>  -->
+    
     <script type="text/javascript" src="js/my-app.js"></script>
     <script type="text/javascript" src="js/my-app-text.js"></script>
-    <!-- <script>myApp.params.swipePanelOnlyClose=false;var Gusuario_id=232</script> -->
     <script type="text/javascript" src="js/my-notify.js"></script>
     <script type="text/javascript" src="js/my-curso.js"></script>
         <script type="text/javascript" src="js/my-curso-cronograma.js"></script>

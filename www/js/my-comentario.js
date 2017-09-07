@@ -1,5 +1,5 @@
 $$(document).on('click','#btn-comentario',function(){
-   comentario_cargar();     
+   // comentario_cargar();     
 });
 
 function comentario_cargar(){

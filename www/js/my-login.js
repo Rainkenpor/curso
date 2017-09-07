@@ -1,6 +1,4 @@
 
-var Gusuario_id =0;
-var Gusuario_nombre='';
 
    // NOTE: use your firebase info here
 // Initialize Firebase
@@ -19,47 +17,34 @@ var Gusuario_nombre='';
     if (user) {
         // alert("fire logged! "+user.email +" - "+user.userId);
         var data=script({opcion:"usuario_entrar", email:user.email},1);
-        notificaciones_push();
-        
-        document.querySelector("#image").src = data.imagen;
-        $$(".panel-left .content-block #login .usuario").html(data.usuario);
-        $$(".panel-left .content-block #login .image-temp").hide();
-        $$(".panel-left .content-block #login #imagen #image").show();
+        data=JSON.parse(data);
         Gusuario_id=data.id_usu;
         Gusuario_nombre=data.usuario;
+        $$('.login').hide();
+        $$('.login .google').hide();
+        start();
+
+        notificaciones_push();
+        
+        
         
         $$('.toolbar-inferior').show();
-         myApp.params.swipePanelOnlyClose=false;
-          mainView.router.load({
-            template: myApp.templates.index,
-            animatePages: false,
-            // context: {carpetas: info,cursos:info_curso},
-            reload: true, 
-          });  
+        
+
+
+       // 
+         // myApp.params.swipePanelOnlyClose=false;
+         //  mainView.router.load({
+         //    template: myApp.templates.index,
+         //    animatePages: false,
+         //    // context: {carpetas: info,cursos:info_curso},
+         //    reload: true, 
+         //  });  
 
     } else {
-      // alert('>>Sin DAtos');
-      // vvconsole(script({opcion:"usuario_entrar", email:user.email},1));
-       // var data=script({opcion:"usuario_entrar", email:'walteromarr@gmail.com'},1)
-      $$(".panel-left .content-block #login .image-temp").show();
-      $$(".panel-left .content-block #login #imagen #image").hide();
-      $$(".panel-left .content-block #login .usuario").html('Iniciar Sesión');
 
-       $$('.toolbar-inferior').hide();
-      myApp.params.swipePanelOnlyClose=true;
-      mainView.router.load({
-        template: myApp.templates.login,
-        animatePages: false,
-        // context: {carpetas: info,cursos:info_curso},
-        reload: true, 
-      }); 
-// var data=script({opcion:"usuario_entrar", email:user.email},1);
-        // document.querySelector("#image").src = data.imagen;
-        // $$(".panel-left .content-block #login .usuario").html(data.usuario);
-        // $$(".panel-left .content-block #login .image-temp").hide();
-        // $$(".panel-left .content-block #login #imagen #image").show();
+      $$('.login .google').show();
 
-        // alert('fire not logged');
     }
   });
 
@@ -78,37 +63,47 @@ var Gusuario_nombre='';
             vconsole('Registrando usuario');
             script({opcion:"registro_google", id:obj.userId,usu:obj.displayName,email:obj.email,imagen:obj.imageUrl},1);
             // alert(1);
+            vconsole('Registro Finalizado');
             var data=script({opcion:"usuario_entrar", email:obj.email},1);
+            vconsole('=====================================================================');
+            vconsole(data);
+            data=JSON.parse(data);
+            vconsole(data.usuario);
+            vconsole(data.imagen);
             vconsole('Cargando datos de usuario');
+            vconsole('=====================================================================');
+            Gusuario_id=data.id_usu;
+            Gusuario_nombre=data.usuario;
+
+            $$('.login').hide();
+            $$('.login .google').hide();
+
+            start();
             notificaciones_push();
+              // $$(".panel-left .content-block #login .usuario").html(data.usuario);
+              // $$(".panel-left .content-block #login .image-temp").hide();
+              // $$(".panel-left .content-block #login #imagen #image").show();
+              
 
-            document.querySelector("#image").src = null;
-              document.querySelector("#image").src = data.imagen;
-              $$(".panel-left .content-block #login .usuario").html(data.usuario);
-              $$(".panel-left .content-block #login .image-temp").hide();
-              $$(".panel-left .content-block #login #imagen #image").show();
-              Gusuario_id=data.id_usu;
-              Gusuario_nombre=data.usuario;
-
-            document.querySelector("#feedback").innerHTML = "Hi, " + obj.displayName + ", " + obj.email;
+            // document.querySelector("#feedback").innerHTML = "Hi, " + obj.displayName + ", " + obj.email;
             if (!firebase.auth().currentUser) {
 
               
 
-                document.querySelector("#feedback").innerHTML ='signing firebase';
+                // document.querySelector("#feedback").innerHTML ='signing firebase';
                 firebase.auth().signInWithCredential(firebase.auth.GoogleAuthProvider.credential(obj.idToken))
                 .then((success) => {
-                    vvconsole("success: " + JSON.stringify(success)); // to long json to put it in #feedback
+                    vconsole("success: " + JSON.stringify(success)); // to long json to put it in #feedback
                 })
                 .catch((error) => {
-                        document.querySelector("#feedback").innerHTML = "error0: " + JSON.stringify(error);
+                        // document.querySelector("#feedback").innerHTML = "error0: " + JSON.stringify(error);
                       });
             }else{
-                document.querySelector("#feedback").innerHTML ='error1: already sigend in firebase';
+                // document.querySelector("#feedback").innerHTML ='error1: already sigend in firebase';
             }
         },
         function (msg) {
-          document.querySelector("#feedback").innerHTML = "error2: " + msg;
+          // document.querySelector("#feedback").innerHTML = "error2: " + msg;
         }
     );
   }
@@ -120,7 +115,7 @@ var Gusuario_nombre='';
           
         },
         function (msg) {
-          document.querySelector("#feedback").innerHTML = "error: " + msg;
+          // document.querySelector("#feedback").innerHTML = "error: " + msg;
         }
     );
   }
@@ -129,24 +124,36 @@ var Gusuario_nombre='';
     trySilentLogin() ;
     window.plugins.googleplus.logout(
         function (msg) {
-          document.querySelector("#image").style.visibility = 'hidden';
-          document.querySelector("#feedback").innerHTML = msg;
-          $$(".panel-left .content-block #login .image-temp").show();
-            $$(".panel-left .content-block #login #imagen #image").hide();
-            $$(".panel-left .content-block #login .usuario").html('Iniciar Sesión');
-            myApp.closePanel();
-
+          vconsole(msg);
+          // document.querySelector("#image").style.visibility = 'hidden';
+          // document.querySelector("#feedback").innerHTML = msg;
+          // $$(".panel-left .content-block #login .image-temp").show();
+            // $$(".panel-left .content-block #login #imagen #image").hide();
+            // $$(".panel-left .content-block #login .usuario").html('Iniciar Sesión');
+            // myApp.closePanel();
+            vconsole('cerrando sesion');
             for(key in localStorage) {localStorage.removeItem(key);}
+
+
+            $$('.login').show();
+            $$('.login .google').show();
 
             Gusuario_id=0;
             Gusuario_nombre='';
+            mySwiper_inicio=undefined;
+            mySwiper_curso=undefined; 
+            mySwiper_curso_det=undefined;
+            $$(".swiper-container-menu .swiper-slide").html('');
+
+
+
           if(firebase.auth().currentUser){
-            document.querySelector("#feedback").innerHTML ='signing out from firebase';
+            // document.querySelector("#feedback").innerHTML ='signing out from firebase';
             firebase.auth().signOut();
           }
         },
         function (msg) {
-          document.querySelector("#feedback").innerHTML = msg;
+          // document.querySelector("#feedback").innerHTML = msg;
         }
     );
   }
@@ -176,7 +183,7 @@ var Gusuario_nombre='';
   //   );
   // }
   window.onerror = function(what, line, file) {
-    vvconsole(what + '; ' + line + '; ' + file);
+    vconsole(what + '; ' + line + '; ' + file);
   };
   function handleOpenURL (url) {
     document.querySelector("#feedback").innerHTML = "App was opened by URL: " + url;

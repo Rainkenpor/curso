@@ -1,5 +1,6 @@
 $$(document).on('click','#btn-tarea',function(){
-   evento_cargar();     
+   // evento_cargar();    
+   mySwiper.slideTo(1); 
 });
 
 function evento_cargar(){

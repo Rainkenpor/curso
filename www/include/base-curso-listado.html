@@ -1,0 +1,29 @@
+
+{{#each datos}}
+<div class="vpanel panel-curso" id_curso="{{id_curs}}" curso="{{curso}}" rol="{{id_rol}}">
+  <table width="100%" style="border-spacing:0px">
+    <tr> 
+      <td width="10px">
+        
+          {{#if_compare id_rol "===" "1"}}
+            <div  style="background-color:#8BC34A;border-radius:0px 100% 100% 0px;height:70px;width:4px;"> </div>
+          {{else}}
+            <div  style="background-color:#2196F3;border-radius:0px 100% 100% 0px;height:70px;width:4px;"> </div>
+          {{/if_compare}}
+        
+
+      </td>
+      <td  valign="top" style="padding-top:5px">
+        <b style="font-size: 16px;"> {{curso}}</b>
+        <br>
+        <div style="color:#90A4AE;font-size: 13px"><span class="icon-user-o"></span> {{usuario}}</div>
+        <!-- <div style="color:#90A4AE;font-size: 12px"><span class="icon-clock-3"></span> {{fecha_creacion}}</div> -->
+        <div style="color:#90A4AE;font-size: 13px"><span class="icon-bell"></span> Sin Notificaciones</div>
+      </td>
+    </tr>
+  </table>
+
+</div>
+{{else}}
+sin cursos
+{{/each}}

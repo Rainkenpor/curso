@@ -1,30 +1,6 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
-        "id": "cordova-plugin-device.device",
-        "file": "plugins/cordova-plugin-device/www/device.js",
-        "pluginId": "cordova-plugin-device",
-        "clobbers": [
-            "device"
-        ]
-    },
-    {
-        "id": "cordova-plugin-googleplus.GooglePlus",
-        "file": "plugins/cordova-plugin-googleplus/www/GooglePlus.js",
-        "pluginId": "cordova-plugin-googleplus",
-        "clobbers": [
-            "window.plugins.googleplus"
-        ]
-    },
-    {
-        "id": "phonegap-plugin-push.PushNotification",
-        "file": "plugins/phonegap-plugin-push/www/push.js",
-        "pluginId": "phonegap-plugin-push",
-        "clobbers": [
-            "PushNotification"
-        ]
-    },
-    {
         "id": "com.megster.cordova.FileChooser.FileChooser",
         "file": "plugins/com.megster.cordova.FileChooser/www/fileChooser.js",
         "pluginId": "com.megster.cordova.FileChooser",
@@ -33,11 +9,19 @@ module.exports = [
         ]
     },
     {
-        "id": "cordova-plugin-filepath.FilePath",
-        "file": "plugins/cordova-plugin-filepath/www/FilePath.js",
-        "pluginId": "cordova-plugin-filepath",
+        "id": "cordova-plugin-android-permissions.Permissions",
+        "file": "plugins/cordova-plugin-android-permissions/www/permissions.js",
+        "pluginId": "cordova-plugin-android-permissions",
         "clobbers": [
-            "window.FilePath"
+            "cordova.plugins.permissions"
+        ]
+    },
+    {
+        "id": "cordova-plugin-device.device",
+        "file": "plugins/cordova-plugin-device/www/device.js",
+        "pluginId": "cordova-plugin-device",
+        "clobbers": [
+            "device"
         ]
     },
     {
@@ -214,6 +198,14 @@ module.exports = [
         "runs": true
     },
     {
+        "id": "cordova-plugin-file-opener2.FileOpener2",
+        "file": "plugins/cordova-plugin-file-opener2/www/plugins.FileOpener2.js",
+        "pluginId": "cordova-plugin-file-opener2",
+        "clobbers": [
+            "cordova.plugins.fileOpener2"
+        ]
+    },
+    {
         "id": "cordova-plugin-file-transfer.FileTransferError",
         "file": "plugins/cordova-plugin-file-transfer/www/FileTransferError.js",
         "pluginId": "cordova-plugin-file-transfer",
@@ -230,36 +222,54 @@ module.exports = [
         ]
     },
     {
-        "id": "cordova-plugin-android-permissions.Permissions",
-        "file": "plugins/cordova-plugin-android-permissions/www/permissions.js",
-        "pluginId": "cordova-plugin-android-permissions",
+        "id": "cordova-plugin-filepath.FilePath",
+        "file": "plugins/cordova-plugin-filepath/www/FilePath.js",
+        "pluginId": "cordova-plugin-filepath",
         "clobbers": [
-            "cordova.plugins.permissions"
+            "window.FilePath"
         ]
     },
     {
-        "id": "cordova-plugin-file-opener2.FileOpener2",
-        "file": "plugins/cordova-plugin-file-opener2/www/plugins.FileOpener2.js",
-        "pluginId": "cordova-plugin-file-opener2",
+        "id": "cordova-plugin-googleplus.GooglePlus",
+        "file": "plugins/cordova-plugin-googleplus/www/GooglePlus.js",
+        "pluginId": "cordova-plugin-googleplus",
         "clobbers": [
-            "cordova.plugins.fileOpener2"
+            "window.plugins.googleplus"
+        ]
+    },
+    {
+        "id": "cordova-plugin-statusbar.statusbar",
+        "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+        "pluginId": "cordova-plugin-statusbar",
+        "clobbers": [
+            "window.StatusBar"
+        ]
+    },
+    {
+        "id": "phonegap-plugin-push.PushNotification",
+        "file": "plugins/phonegap-plugin-push/www/push.js",
+        "pluginId": "phonegap-plugin-push",
+        "clobbers": [
+            "PushNotification"
         ]
     }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "cordova-plugin-device": "1.1.6",
-    "cordova-plugin-googleplus": "5.1.1",
-    "cordova-plugin-whitelist": "1.3.2",
-    "phonegap-plugin-push": "1.10.5",
     "com.megster.cordova.FileChooser": "0.0.0",
-    "cordova-plugin-filepath": "1.0.2",
-    "cordova-plugin-compat": "1.1.0",
-    "cordova-plugin-file": "4.3.3",
-    "cordova-plugin-file-transfer": "1.6.3",
     "cordova-plugin-android-permissions": "1.0.0",
-    "cordova-plugin-file-opener2": "2.0.19"
+    "cordova-plugin-compat": "1.1.0",
+    "cordova-plugin-console": "1.0.7",
+    "cordova-plugin-device": "1.1.6",
+    "cordova-plugin-file": "4.3.3",
+    "cordova-plugin-file-opener2": "2.0.19",
+    "cordova-plugin-file-transfer": "1.6.3",
+    "cordova-plugin-filepath": "1.0.2",
+    "cordova-plugin-googleplus": "5.1.1",
+    "cordova-plugin-statusbar": "1.0.1",
+    "cordova-plugin-whitelist": "1.3.2",
+    "phonegap-plugin-push": "1.10.5"
 };
 // BOTTOM OF METADATA
 });

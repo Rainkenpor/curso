@@ -1,0 +1,38 @@
+{
+    "name": "com.zaionnet.curso",
+    "version": "1.0.6",
+    "displayName": "Curso2.0",
+    "cordova": {
+        "platforms": [
+            "android",
+            "browser"
+        ],
+        "plugins": {
+            "com.megster.cordova.FileChooser": {},
+            "cordova-plugin-android-permissions": {},
+            "cordova-plugin-device": {},
+            "cordova-plugin-file-opener2": {},
+            "cordova-plugin-file-transfer": {},
+            "cordova-plugin-filepath": {},
+            "cordova-plugin-googleplus": {
+                "REVERSED_CLIENT_ID": "com.zaionnet.curso"
+            },
+            "cordova-plugin-whitelist": {},
+            "phonegap-plugin-push": {
+                "SENDER_ID": "85075801930"
+            }
+        }
+    },
+    "dependencies": {
+        "cordova-browser": "~4.1.0",
+        "cordova-android": "~6.1.2",
+        "com.megster.cordova.FileChooser": "http://github.com/don/cordova-filechooser.git",
+        "cordova-plugin-android-permissions": "~1.0.0",
+        "cordova-plugin-device": "~1.1.6",
+        "cordova-plugin-file-opener2": "~2.0.19",
+        "cordova-plugin-file-transfer": "~1.6.3",
+        "cordova-plugin-filepath": "~1.0.2",
+        "cordova-plugin-whitelist": "1",
+        "phonegap-plugin-push": "~1.10.5"
+    }
+}

@@ -1,0 +1,8 @@
+2017-09-05 00:58:08: -- Análisis iniciado por On File Change Incremental
+2017-09-05 00:58:12: Cambios: 1, Conflictos: 0, CopiaFecha: 0, CopiaEstado: 0, Errores: 0, All: 120
+2017-09-05 00:58:12: Right to Left: Copy File: 1 
+2017-09-05 00:58:12: == Sinc comenzada por On File Change Incremental
+2017-09-05 00:58:17: C:/Users/Walter Omar/Desktop/android/curso2.0/www/js/base-inicio.js: Source file has changed between Analyze and Sync from '[file] size=15,924 accu-time=2017-09-05 00:58:04 attr=Archive' to 'size=15,954 time=2017-09-05 00:58:12', noted in source file state
+2017-09-05 00:58:17: Copiar Sobre 'C:/Users/Walter Omar/Desktop/android/curso2.0/www/js/base-inicio.js' -> 'mtp://UUI/Storage/curso2.0/www/js/base-inicio.js'
+2017-09-05 00:58:22: == Sinc. Completa. Tiempo: 00:00:10, Velocidad: 3.11 KB/s, OK: 1, Errores: 0
+2017-09-05 00:58:25: 

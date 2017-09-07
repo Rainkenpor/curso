@@ -1,0 +1,9 @@
+2017-09-05 00:51:30: -- Análisis iniciado por On File Change Incremental
+2017-09-05 00:51:33: D: State File has changed, so re-read it: C:/Users/Walter Omar/Desktop/android/curso2.0/www/_gsdata_/_file_state_v4._gs
+2017-09-05 00:51:33: D: State file does not exist: C:/Users/Walter Omar/Desktop/android/curso2.0/www/_gsdata_/_file_state_v4._gs
+2017-09-05 00:51:33: Cambios: 1, Conflictos: 0, CopiaFecha: 0, CopiaEstado: 118, Errores: 0, All: 120
+2017-09-05 00:51:33: Right to Left: Copy File: 1 
+2017-09-05 00:51:33: == Sinc comenzada por On File Change Incremental
+2017-09-05 00:51:39: Copiar Sobre 'C:/Users/Walter Omar/Desktop/android/curso2.0/www/js/base-inicio.js' -> 'mtp://UUI/Storage/curso2.0/www/js/base-inicio.js'
+2017-09-05 00:51:46: == Sinc. Completa. Tiempo: 00:00:13, Velocidad: 81.2 KB/s, OK: 119, Errores: 0
+2017-09-05 00:51:48: 

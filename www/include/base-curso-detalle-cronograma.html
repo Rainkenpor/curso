@@ -1,0 +1,26 @@
+<div class="timeline timeline-sides" style="margin-top: 0px">
+{{#each elementos}}
+  <div class="timeline-item">
+    <div class="timeline-item-date">{{dia}}<small>{{mes}}</small></div>
+    <div class="timeline-item-divider"></div>
+    <div class="timeline-item-content">
+        {{#each datos}}
+            {{#if_compare tarea "==" "tar"}}
+            <div class="vpanel2 timeline-item-inner" style="overflow:hidden;font-size:12px"   id_tarea="{{codigo}}">
+                <div style="width:100%;overflow:hidden;height: 22px">
+                    <span class="icon-pencil-alt-1" ></span>
+            {{else}}
+            <div class="vpanel2 timeline-item-inner" style="overflow:hidden;font-size:12px" >
+                <div style="width:100%;overflow:hidden;height: 22px">
+                    <span class="icon-book-4"></span>
+            {{/if_compare}}
+            <b>{{titulo}}</b>
+            </div>
+            
+            {{descripcion}}
+        </div>
+        {{/each}}
+    </div>
+  </div>
+{{/each}}
+</div>

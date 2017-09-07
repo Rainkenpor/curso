@@ -1,0 +1,56 @@
+{{#each datos}}
+<img src="src/perfil1.png" width="100%" height="200px" style="border-radius: 10px 10px 0px 0px" alt="">
+<div style="background: linear-gradient(to bottom, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.8) 10%, rgba(255,255,255,1) 100%);width: 100%;position: relative;top:-106px; height: 100px">
+	<div style="margin:auto; top:-50px; position:relative;text-align: center;line-height: 60px">
+		<img src="{{imagen}}" style="width: 91px;height: 91px;border-radius: 100%;margin-top: 2px;border:5px solid white" alt="">
+	</div>
+
+	<div style="font-weight: bold;margin-top: -70px;text-align: center;font-size: 16px">
+		{{nombre}}
+	</div>
+
+	<div style="text-align: center;font-size: 13px">
+		<span class="icon-quote-left-1"></span>Nunca te detengas, sigue aprendiendo siempres<span class="icon-quote-right-1"></span>
+	</div>
+
+	<table width="100%" style="text-align: center;margin-top: 15px;margin-bottom: 5px">
+		<tr>
+			<td>
+				<span class="icon-birthday" style="font-size: 30px"></span>
+				<br>
+				16/06/1991
+			</td>
+			<td style="border-left:1px solid #ccc">
+				<span class="icon-venus-mars" style="font-size: 30px"></span>
+				<br>
+				Masculino
+			</td>
+			<td style="border-left:1px solid #ccc">
+				<span class="icon-gmail" style="font-size: 30px"></span>
+				<br>
+				{{correo}}
+			</td>
+		</tr>
+	</table>
+
+	<div class="chip" onclick="logout()">Salir</div>
+
+	<div style="padding:5px 10px;margin-top: 10px">
+		Pertenece a:
+	</div>
+	 	<div class="chip">
+	    	<div class="chip-media bg-blue">U</div>
+	    	<div class="chip-label">Mariano Galvez de Guatemala</div>
+	  	</div>
+	  	<div class="chip">
+	    	<div class="chip-media bg-blue">I</div>
+	    	<div class="chip-label">Intecap</div>
+	  	</div>
+	  	<div class="chip">
+	    	<div class="chip-media bg-blue">C</div>
+	    	<div class="chip-label">Calusac</div>
+	  	</div>
+</div>
+{{else}}
+sin datos
+{{/each}}

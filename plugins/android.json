@@ -7,7 +7,22 @@
         "files": {}
     },
     "installed_plugins": {
+        "com.megster.cordova.FileChooser": {
+            "PACKAGE_NAME": "com.zaionnet.curso"
+        },
+        "cordova-plugin-android-permissions": {
+            "PACKAGE_NAME": "com.zaionnet.curso"
+        },
         "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.zaionnet.curso"
+        },
+        "cordova-plugin-file-opener2": {
+            "PACKAGE_NAME": "com.zaionnet.curso"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.zaionnet.curso"
+        },
+        "cordova-plugin-filepath": {
             "PACKAGE_NAME": "com.zaionnet.curso"
         },
         "cordova-plugin-googleplus": {
@@ -19,28 +34,19 @@
         "phonegap-plugin-push": {
             "SENDER_ID": "85075801930",
             "PACKAGE_NAME": "com.zaionnet.curso"
-        },
-        "com.megster.cordova.FileChooser": {
-            "PACKAGE_NAME": "com.zaionnet.curso"
-        },
-        "cordova-plugin-filepath": {
-            "PACKAGE_NAME": "com.zaionnet.curso"
-        },
-        "cordova-plugin-file-transfer": {
-            "PACKAGE_NAME": "com.zaionnet.curso"
-        },
-        "cordova-plugin-android-permissions": {
-            "PACKAGE_NAME": "com.zaionnet.curso"
-        },
-        "cordova-plugin-file-opener2": {
-            "PACKAGE_NAME": "com.zaionnet.curso"
         }
     },
     "dependent_plugins": {
         "cordova-plugin-compat": {
             "PACKAGE_NAME": "com.zaionnet.curso"
         },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.zaionnet.curso"
+        },
         "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.zaionnet.curso"
+        },
+        "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "com.zaionnet.curso"
         }
     }

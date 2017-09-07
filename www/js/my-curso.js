@@ -5,11 +5,11 @@ var glob_rol_id;
 // click en el boton de cursos
 // carga los cursos actuales
 
-$$(document).on('click','#btn-curso',function(){
-	var datos = {opcion:"curso_listado",usuario:Gusuario_id}; 
-	script(datos);
-
-});
+// $$(document).on('click','#btn-curso',function(){
+// 	// var datos = {opcion:"curso_listado",usuario:Gusuario_id}; 
+// 	// script(datos);
+// 	mySwiper.slideTo(2);
+// });
 
 
 $$(document).on('click','.popover .curso-busqueda',function(){

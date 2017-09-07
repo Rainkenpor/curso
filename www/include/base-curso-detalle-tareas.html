@@ -1,0 +1,25 @@
+<!-- Popover -->
+<!-- Speed Dial Wrap -->
+  
+
+{{#each datos}}
+<div class="vpanel panel-curso-tarea" id_tarea="{{id_tar}}">
+  <table width="100%" style="border-spacing:0px">
+    <tr> 
+      <td width="10px">
+        
+      </td>
+      <td  valign="top" style="padding-top:5px">
+        <b style="font-size: 16px;"> {{tarea}}</b>
+        <br>
+        <div style="color:#90A4AE;font-size: 13px"><span class="icon-clock-8" ></span> {{finalizacion}}</div>
+        <!-- <div style="color:#90A4AE;font-size: 12px"><span class="icon-clock-3"></span> {{fecha_creacion}}</div> -->
+        <div style="color:#90A4AE;font-size: 13px"><span class="icon-warning" style="color: #F44336"></span> No se ha enviado la tarea</div>
+      </td>
+    </tr>
+  </table>
+
+</div>
+{{else}}
+sin cursos
+{{/each}}
