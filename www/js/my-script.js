@@ -22,9 +22,10 @@ function script(datos,devolver){
     method:'POST',
     success: function respuesta(resp) {
       vconsole('......................RESPUESTA OK......................');
+      glob_resp=resp;
       if (devolver!=2){
         vconsole( JSON.stringify(datos));
-        glob_resp=resp;
+        
 
         if (resp!=''){
   	    	resp2=JSON.parse(resp);

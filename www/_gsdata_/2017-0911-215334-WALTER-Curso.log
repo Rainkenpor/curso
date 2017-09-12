@@ -1,0 +1,13 @@
+2017-09-11 21:53:34: File Monitoring not available on: mtp://UUI/Storage/curso2.0/www
+2017-09-11 21:53:34: On File Change Monitoring started on file:///C:/Users/Walter Omar/Desktop/android/curso2.0/www
+2017-09-11 21:53:34: -- Análisis iniciado por On File Change First Full Analyze Upon File Monitoring Start
+2017-09-11 21:53:40: /index.html: R:Body<>; Conflicto: Archivo Modificado en ambos lados
+2017-09-11 21:53:40: /js/base-inicio.js: R:Body<>; Conflicto: Archivo Modificado en ambos lados
+2017-09-11 21:53:40: /js/my-app-text.js: R:Body<>; Conflicto: Archivo Modificado en ambos lados
+2017-09-11 21:53:40: Análisis completado con Conflictos. Resuelva los Conflictos seleccionando la dirección de sincronización adecuada y luego haga clic para sincronizar
+2017-09-11 21:53:40: Cambios: 217, Conflictos: 3, CopiaFecha: 0, CopiaEstado: 0, Errores: 0, All: 330
+2017-09-11 21:53:40: Left to Right: Copy File: 7 
+2017-09-11 21:53:40: Right to Left: Copy File: 207 
+2017-09-11 21:53:40: == Sinc comenzada por On File Change First Full Analyze Upon File Monitoring Start
+2017-09-11 21:53:41: 65% (217 / 329) archivos cambiados (excluyendo renombrados), superan el umbral de 50%. Por tanto la tarea no se sincronizará automáticamente.
+2017-09-11 21:53:41: 

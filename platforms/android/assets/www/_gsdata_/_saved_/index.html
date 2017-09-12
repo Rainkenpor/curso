@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <title>Curso</title>
+
+    <link rel="stylesheet" href="lib/framework7/css/framework7.ios.min.css">
+    <link rel="stylesheet" href="lib/framework7/css/framework7.ios.colors.min.css">
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/fontello.css">
+
+    <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+
+
+</head>
+
+<body>
+    <!-- Status bar overlay for full screen mode (PhoneGap) -->
+    <div class="statusbar-overlay"></div>
+
+    <!-- Panels overlay-->
+    <div class="panel-overlay"></div>
+    <!-- Left panel with reveal effect-->
+
+    <!-- Views -->
+    <div class="views">
+        <!-- Your main view, should have "view-main" class -->
+        <div class="view view-main">
+
+
+            <!-- Top Navbar-->
+            <div class="pages">
+                <!-- Page, "data-page" contains page name -->
+                <div data-page="index" class="page">
+
+                    <!-- Scrollable page content -->
+                    <div class="page-content">
+
+                        <div class="content-block">
+
+                            <div class="swiper-container swiper-container-menu">
+                                <div class="swiper-wrapper">
+                                  <div class="swiper-slide" name='inicio' include='base-inicio.html' ></div>
+                                  <div class="swiper-slide" name='evento' include='base-evento.html'></div>
+                                  <div class="swiper-slide" name='curso' include='base-curso.html'  ></div>
+                                  <div class="swiper-slide" name='favorito' include='base-favorito.html'></div>
+                                  <div class="swiper-slide" name='comentario' include='base-comentario.html'></div>
+                                </div>
+                                <!-- <div class="swiper-pagination"></div> -->
+                              </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+
+            <!-- Bottom Toolbar-->
+            <div class="toolbar toolbar-inferior">
+                <div class="toolbar-inner">
+                    <table width="100%" style="border-spacing:0px">
+                        <tr>
+                            <td class="activo"><div id="btn-home" index="0" class="icon-home-outline"></div></td>
+                            <td><div id="btn-tarea"         index="1" class="icon-calendar-check-o"></div></td>
+                            <td><div id="btn-curso"         index="2" class="icon-book-4"></div></td>
+                            <td><div id="btn-destacado"     index="3" class="icon-star"></div></td>
+                            <td><div id="btn-comentario"    index="4" class="icon-comment-6"></div></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+
+            <div class="login">
+                 <!-- <div class="content-block-title">Inline with custom toolbar</div> -->
+                  
+                      <div style="padding:10px;  width:auto">
+                      <!-- <img src="src/logo.png" alt=""> -->
+                        <!-- <div id="calendar-inline-container"></div> -->
+                        <div style="text-align: center;margin-top: 20px">
+                            <img src="src/logo_login.png" height="150px" alt="">    
+                        </div>
+                        
+                        <div style="font-size: 35px;color:#607D8B;text-align: center;margin-bottom:17px;font-weight:bold">
+                        Curso
+                        </div>
+
+                        <div onclick="login()" class="google"> 
+                                <span class="icon-google" style="padding-right: 5px;border-right:2px solid white;margin-right: 3px"></span>
+                                Iniciar sesión con Google</div>
+                      </div>
+                      <div style="color:#E0E0E0;margin-top:10px" id="login_console">
+                          
+                      </div>
+                    
+            </div>
+
+        </div>
+    </div>
+
+<!-- ========================================================================================================================================= -->
+
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+
+    <!-- <script type="text/javascript" src="js/pushnotification.js"></script> -->
+    <script type="text/javascript" src="lib/MSOpenTech/winstore-jscompat.js"></script>
+    <script type="text/javascript" src="lib/framework7/js/framework7.min.js"></script>
+    <script type="text/javascript" src="js/init-styles.js"></script>
+    <script type="text/javascript" src="js/my-script.js"></script>
+
+    <script>
+        // If we need to use custom DOM library, let's save it to $$ variable:
+        var $$ = Dom7;
+    </script>
+    
+    
+    <script type="text/javascript" src="js/my-inicialize.js"></script>
+    <script type="text/javascript" src="js/base-inicio.js"></script>
+    <script>
+    for(key in localStorage) {localStorage.removeItem(key);};
+    var Gusuario_id=183;
+    $$('.login').hide();
+    start(); 
+    </script>  
+    <!-- <script type="text/javascript" src="js/my-login.js"></script>  -->
+    
+    <script type="text/javascript" src="js/my-app.js"></script>
+    <script type="text/javascript" src="js/my-app-text.js"></script>
+    <script type="text/javascript" src="js/my-notify.js"></script>
+    <script type="text/javascript" src="js/my-curso.js"></script>
+        <script type="text/javascript" src="js/my-curso-cronograma.js"></script>
+        <script type="text/javascript" src="js/my-curso-busqueda.js"></script>
+        <script type="text/javascript" src="js/my-curso-tarea.js"></script>
+        <script type="text/javascript" src="js/my-curso-adjunto.js"></script>
+    <script type="text/javascript" src="js/my-evento.js"></script>
+    <script type="text/javascript" src="js/my-comentario.js"></script>
+    <script type="text/javascript" src="js/my-carga-archivo.js"></script>
+    <script type="text/javascript" src="js/my-descarga-archivo.js"></script>
+
+
+</body>
+
+
+</html>

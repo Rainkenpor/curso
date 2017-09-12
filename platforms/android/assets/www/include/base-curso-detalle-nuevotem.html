@@ -1,0 +1,22 @@
+{{#each datos}}
+<div style="padding:4px;background-color: #616161;color:white;margin-top: -5px;margin-bottom: 10px;margin-left:-5px;width:calc(100% + 2px)">{{id}} {{curso}}</div>
+	<label>Tema</label>
+	<input type="text" class="form-control" style="width: calc(100% - 9px)" id="titulo">
+	<label>Descripción</label>
+	<textarea class="form-control" style="width: calc(100% - 9px)" rows="4" id="descripcion">
+	</textarea>
+	<label>Habilitacion de tema</label>
+	<input type="text" id="modal_fecha" class="form-control" style="width: calc(100% - 9px)">
+
+	<div class="checkbox" style="font-size: 15px;padding: 7px">
+		<span class="icon-circle-empty" style="font-size: 21px"></span>	Habilitar comentarios
+	</div>
+	<div class="checkbox" style="font-size: 15px;padding: 7px">
+		<span class="icon-circle-empty" style="font-size: 21px"></span>	Habilitar adjuntos
+	</div>
+	
+
+
+{{else}}
+sin informacion
+{{/each}}

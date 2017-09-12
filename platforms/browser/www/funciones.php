@@ -199,6 +199,24 @@ if ($conn->connect_error) {
 		}
 	}
 // ================================================================================================================================================
+	if ($v_opcion=='curso_tema_nuevo'){
+		$v_usuario=htmlspecialchars($_POST['usuario'],ENT_QUOTES);
+		$v_curso=htmlspecialchars($_POST['curso'],ENT_QUOTES);
+		$v_descripcion=htmlspecialchars($_POST['descripcion'],ENT_QUOTES);
+		$v_tema=htmlspecialchars($_POST['tema'],ENT_QUOTES);
+		
+		$v_finaliza=htmlspecialchars($_POST['fecha_habilitacion'],ENT_QUOTES);
+
+		if (isset($_POST['tema']) && trim($_POST['tema'])!=''){
+
+			$strQuery = "insert into curs_tem (tema,descripcion,id_curs,id_usu,fecha_habilitacion) values ('$v_tema','$v_descripcion',$v_curso,$v_usuario,'$v_finaliza')";
+			$conn->multi_query($strQuery);
+
+			echo $strQuery;
+		}else{
+			echo 'Debe de ingresar el titulo del tema';
+		}
+	}
 // ================================================================================================================================================
 	if ($v_opcion=='curso_listado'){
 		$v_usuario=htmlspecialchars($_POST['usuario'],ENT_QUOTES);
@@ -312,7 +330,13 @@ if ($conn->connect_error) {
 						DATE_FORMAT(fecha_finalizacion,'%b') mes
 						from curs_tar
 						where id_curs=$v_curso
-						order by fecha_finalizacion desc" ;
+					union all 
+ 					select 'tem' tipo,id_tem codigo, tema titulo,descripcion,fecha_habilitacion,
+                        DATE_FORMAT(fecha_habilitacion,'%d') dia,
+                        DATE_FORMAT(fecha_habilitacion,'%b') mes
+                        from curs_tem
+                        where id_curs=$v_curso
+						order by 5 desc" ;
 		if ($conn->multi_query($strQuery)){
 			if ($result=$conn->store_result()){
 				while($row=$result->fetch_assoc()){

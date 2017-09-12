@@ -1,0 +1,14 @@
+2017-09-09 05:22:00: -- Análisis iniciado por On File Change Incremental
+2017-09-09 05:22:02: /index.html: R:Body<>; Conflicto: Archivo Modificado en ambos lados
+2017-09-09 05:22:02: Análisis completado con Conflictos. Resuelva los Conflictos seleccionando la dirección de sincronización adecuada y luego haga clic para sincronizar
+2017-09-09 05:22:02: Cambios: 1, Conflictos: 1, CopiaFecha: 0, CopiaEstado: 0, Errores: 0, All: 122
+2017-09-09 05:22:02: == Sinc comenzada por On File Change Incremental
+2017-09-09 05:22:02: /index.html: unresolved conflict results in No Copy
+2017-09-09 05:22:04: == Sinc. Completa. Tiempo: 00:00:02, Velocidad: 0 bytes/s, OK: 0, Errores: 0, Conflicts: 1
+2017-09-09 05:22:04: 
+2017-09-09 05:22:16: === User Changed Action from 'CONFLICT' to 'COPY_FILE_LTOR' on item /index.html
+2017-09-09 05:22:16: Done.
+2017-09-09 05:22:28: == Sinc comenzada por User Command
+2017-09-09 05:22:30: Copiar Sobre 'mtp://UUI/Storage/curso2.0/www/index.html' -> 'C:/Users/Walter Omar/Desktop/android/curso2.0/www/index.html' (User Action)
+2017-09-09 05:22:32: == Sinc. Completa. Tiempo: 00:00:04, Velocidad: 3.39 KB/s, OK: 1, Errores: 0
+2017-09-09 05:22:33: 

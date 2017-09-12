@@ -18,6 +18,11 @@
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/fontello.css">
 
+
+    <link rel="stylesheet" href="css/samples.css">
+    <link rel="stylesheet" href="toolbarconfigurator/lib/codemirror/neo.css">
+
+
     <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
 
 
@@ -35,18 +40,13 @@
     <div class="views">
         <!-- Your main view, should have "view-main" class -->
         <div class="view view-main">
-
-
             <!-- Top Navbar-->
             <div class="pages">
                 <!-- Page, "data-page" contains page name -->
                 <div data-page="index" class="page">
-
                     <!-- Scrollable page content -->
-                    <div class="page-content">
-
+                    <div class="page-content" style="height: calc(100% - 50px)">
                         <div class="content-block">
-
                             <div class="swiper-container swiper-container-menu">
                                 <div class="swiper-wrapper">
                                   <div class="swiper-slide" name='inicio' include='base-inicio.html' ></div>
@@ -108,17 +108,10 @@
     </div>
 
 
-
-
-
-
-
+<script src="../ckeditor.js"></script>
+    <script src="js/sample.js"></script>
 
 <!-- ========================================================================================================================================= -->
-
-
-
-
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 
     <!-- <script type="text/javascript" src="js/pushnotification.js"></script> -->
@@ -132,9 +125,9 @@
         var $$ = Dom7;
     </script>
     
-    
     <script type="text/javascript" src="js/my-inicialize.js"></script>
     <script type="text/javascript" src="js/base-inicio.js"></script>
+    <script type="text/javascript" src="js/base-modal.js"></script>
      <script>
     for(key in localStorage) {localStorage.removeItem(key);};
     var Gusuario_id=183;
@@ -146,18 +139,15 @@
     <script type="text/javascript" src="js/my-app.js"></script>
     <script type="text/javascript" src="js/my-app-text.js"></script>
     <script type="text/javascript" src="js/my-notify.js"></script>
-    <script type="text/javascript" src="js/my-curso.js"></script>
-        <script type="text/javascript" src="js/my-curso-cronograma.js"></script>
-        <script type="text/javascript" src="js/my-curso-busqueda.js"></script>
-        <script type="text/javascript" src="js/my-curso-tarea.js"></script>
-        <script type="text/javascript" src="js/my-curso-adjunto.js"></script>
-    <script type="text/javascript" src="js/my-evento.js"></script>
-    <script type="text/javascript" src="js/my-comentario.js"></script>
+    <!-- <script type="text/javascript" src="js/my-curso.js"></script> -->
+        <!-- <script type="text/javascript" src="js/my-curso-cronograma.js"></script> -->
+        <!-- <script type="text/javascript" src="js/my-curso-busqueda.js"></script> -->
+        <!-- <script type="text/javascript" src="js/my-curso-tarea.js"></script> -->
+        <!-- <script type="text/javascript" src="js/my-curso-adjunto.js"></script> -->
+    <!-- <script type="text/javascript" src="js/my-evento.js"></script> -->
+    <!-- <script type="text/javascript" src="js/my-comentario.js"></script> -->
     <script type="text/javascript" src="js/my-carga-archivo.js"></script>
     <script type="text/javascript" src="js/my-descarga-archivo.js"></script>
-
-
 </body>
-
 
 </html>

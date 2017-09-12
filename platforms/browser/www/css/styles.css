@@ -43,6 +43,7 @@
 	width: 	100% ;
 	padding: 0px !important;
 	margin-top: 0px !important;
+	display: inline;
 }
 .swiper-container {
   height: 100%;
@@ -129,12 +130,11 @@
 	position: relative;
 	width: calc(100% - 30px);
 	background-color: white;
-	border:1px solid #ccc;
 	border-radius: 5px;
 	margin:auto;
 	margin-top: 20px;
 	height: calc(100% - 95px);
-	box-shadow: 0px 0px 10px rgba(0,0,0,.4);
+	box-shadow: 0px 0px 10px rgba(0,0,0,.5);
 }
 .fondo-blur #contenedor #data{
 	

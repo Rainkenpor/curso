@@ -97,7 +97,38 @@ function llenado_datos(opcion){
 // ----------------------------------------------------------------------------------------------------------------------------------------
 function escuchas(){
 
+
+	//-------------------------------------------------------------------------------------------------------------------------------------
+	mySwiper.on('slideChangeStart', function () {
+	    $$('.toolbar-inner table tr td').removeClass("activo");
+	    if (mySwiper.realIndex === 0) {$$("#btn-home").parents('td').addClass("activo");}
+	    if (mySwiper.realIndex === 1) {$$("#btn-tarea").parents('td').addClass("activo");}
+	    if (mySwiper.realIndex === 2) {$$("#btn-curso").parents('td').addClass("activo");}
+	    if (mySwiper.realIndex === 3) {$$("#btn-destacado").parents('td').addClass("activo");}
+	    if (mySwiper.realIndex === 4) {$$("#btn-comentario").parents('td').addClass("activo");}
+
+      if (mySwiper_inicio) {mySwiper_inicio.slideTo(0);$$('.contenedor-inicio .boton').removeClass("activo");$$('.contenedor-inicio .boton[index="0"]').addClass("activo");}
+      if (mySwiper_curso){mySwiper_curso.slideTo(0);}
+	});
+	//-------------------------------------------------------------------------------------------------------------------------------------
+	$$(mySwiper_inicio).change(function(){
+		mySwiper_inicio.on('slideChangeStart', function () {
+		    console.log('slide change start '+mySwiper.realIndex);
+		    $$('.toolbar-inner table tr td').removeClass("activo");
+		    if (mySwiper.realIndex === 0) {$$("#btn-home").parents('td').addClass("activo");}
+		    if (mySwiper.realIndex === 1) {$$("#btn-tarea").parents('td').addClass("activo");}
+		    if (mySwiper.realIndex === 2) {$$("#btn-curso").parents('td').addClass("activo");}
+		    if (mySwiper.realIndex === 3) {$$("#btn-destacado").parents('td').addClass("activo");}
+		    if (mySwiper.realIndex === 4) {$$("#btn-comentario").parents('td').addClass("activo");}
+		});
+	});
+	//-------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+	//-------------------------------------------------------------------------------------------------------------------------------------
 	// general
+	//-------------------------------------------------------------------------------------------------------------------------------------
 	$$(document).on('click','.boton',function(){
 		// menus
 		if ($$(this).hasClass('menu')){
@@ -122,27 +153,20 @@ function escuchas(){
 				// llenado_peticion('base-curso-detalle-tareas.html','curso_tareas_'+id_curso,'.swiper-container-curso-detalle #curso_tareas');
 			mySwiper_curso_det.slideTo($$(this).attr('index'));
 		}
-			// modal
-	    	if ($$(this).attr('crear')){
-	    		tipo=$$(this).attr('tipo');
-		 	if (tipo=='nuevo_tarea'){
-		 		var arr=localStorage.getItem('varios');
-		 		vtitulo=$$('.fondo-blur #contenedor #titulo').val();
-		 		vdescripcion=$$('.fondo-blur #contenedor #descripcion').val();
-		 		vfecha=$$('.fondo-blur #contenedor #modal_fecha').val();
-		 		vfecha= new Date(vfecha);
-				vfecha=vfecha.getFullYear() +"-"+(vfecha.getMonth() + 1) + '-' + vfecha.getDate() + '- 00:00:00' ;
-		 		vcurso=JSON.parse(arr)[0].id_curso;
-	 				 		
-		 		datos = {opcion:"curso_tarea_nuevo",usuario:Gusuario_id,curso:vcurso,tarea:vtitulo,descripcion:vdescripcion,fecha_finalizacion:vfecha,tipo:2};	
-		 		script(datos,2);
-		 	}
-			
-		 	$$('.fondo-blur').removeClass('jackInTheBox').removeClass('animated').addClass('fadeOutUp animated');
+		// modal
+	    if ($$(this).attr('crear')){
+	    	tipo=$$(this).attr('tipo');
+			modal_ok($$(this),tipo);
+		}
+		if ($$(this).attr('cerrar')){
+			$$('.fondo-blur').removeClass('jackInTheBox').removeClass('animated').addClass('fadeOutUp animated');
+			setTimeout(function() {$$('.fondo-blur').remove();}, 400);
 		}
 	});
 
+	//-------------------------------------------------------------------------------------------------------------------------------------
 	// menu
+	//-------------------------------------------------------------------------------------------------------------------------------------
 	$$(document).on('click','.toolbar-inferior div',function(){
     		if (mySwiper_inicio) {
     			mySwiper_inicio.slideTo(0);
@@ -154,35 +178,10 @@ function escuchas(){
 	      $$('.fondo-blur').remove();
 	});
 
-	mySwiper.on('slideChangeStart', function () {
-	    $$('.toolbar-inner table tr td').removeClass("activo");
-	    if (mySwiper.realIndex === 0) {$$("#btn-home").parents('td').addClass("activo");}
-	    if (mySwiper.realIndex === 1) {$$("#btn-tarea").parents('td').addClass("activo");}
-	    if (mySwiper.realIndex === 2) {$$("#btn-curso").parents('td').addClass("activo");}
-	    if (mySwiper.realIndex === 3) {$$("#btn-destacado").parents('td').addClass("activo");}
-	    if (mySwiper.realIndex === 4) {$$("#btn-comentario").parents('td').addClass("activo");}
-
-      if (mySwiper_inicio) {mySwiper_inicio.slideTo(0);$$('.contenedor-inicio .boton').removeClass("activo");$$('.contenedor-inicio .boton[index="0"]').addClass("activo");}
-      if (mySwiper_curso){mySwiper_curso.slideTo(0);}
-	});
-
-
-
-	$$(mySwiper_inicio).change(function(){
-		mySwiper_inicio.on('slideChangeStart', function () {
-		    console.log('slide change start '+mySwiper.realIndex);
-		    $$('.toolbar-inner table tr td').removeClass("activo");
-		    if (mySwiper.realIndex === 0) {$$("#btn-home").parents('td').addClass("activo");}
-		    if (mySwiper.realIndex === 1) {$$("#btn-tarea").parents('td').addClass("activo");}
-		    if (mySwiper.realIndex === 2) {$$("#btn-curso").parents('td').addClass("activo");}
-		    if (mySwiper.realIndex === 3) {$$("#btn-destacado").parents('td').addClass("activo");}
-		    if (mySwiper.realIndex === 4) {$$("#btn-comentario").parents('td').addClass("activo");}
-		});
-	});
-
+	//-------------------------------------------------------------------------------------------------------------------------------------
 	// inicio > notificacion
-	// ----------------------------------------------------------------------------------------------------------
-	$$(document).on('click','.contenedor-inicio .swiper-slide[name="inicio-notificacion"] .notificacion',function(){
+	//-------------------------------------------------------------------------------------------------------------------------------------
+	$$(document).on('click','.checkbox',function(){
 		if ($$(this).find('.icon-circle-empty').length>0){
 			$$(this).find('.icon-circle-empty').addClass('icon-ok-circled').removeClass('icon-circle-empty').css({'color':'#4CAF50'});
 		}else{
@@ -190,14 +189,15 @@ function escuchas(){
 		}
 	});
 
-  	// curso// inicio
-  	// ----------------------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------------------------------
+  	// elementos vpanel, vpanel2(sin diseño) - seleccion de cursos y seleccion de tareas
+  	//-------------------------------------------------------------------------------------------------------------------------------------
 	$$(document).on('click','.vpanel, .vpanel2',function(){
 		if ($$(this).hasClass('panel-curso')){
 			id_curso=($$(this).attr('id_curso'));
 			curso=($$(this).attr('curso'));
 			rol=($$(this).attr('rol'));
-
+			// swiper de cursos
 			if (!mySwiper_curso) mySwiper_curso = myApp.swiper('.swiper-container-curso',{onlyExternal:true,speed:300});
 			if (!mySwiper_curso_det) mySwiper_curso_det = myApp.swiper('.swiper-container-curso-detalle',{onlyExternal:true,speed:0});
 
@@ -218,35 +218,33 @@ function escuchas(){
 
 		    	if (rol==1) {mySwiper_curso_det.slideTo(0);$$('.contenedor-curso .boton[index="0"]').addClass('activo'); }
 		    	if (rol==2) {mySwiper_curso_det.slideTo(4);$$('.contenedor-curso .boton[index="4"]').addClass('activo'); }
-	    	}
-	    	if ($$(this).hasClass('panel-curso-nuevo')){
-	    		console.log(1);
-	    		modal($$(this).attr('name'),null,null,'nuevo_tarea');    		
+	    }
+	    if ($$(this).hasClass('panel-curso-nuevo')){	    	
 			id_curso=$$(this).attr('id_curso');
 			curso=$$(this).attr('curso');
 			datos = '[{"id_curso":"'+id_curso+'", "curso":"'+curso+'"}]';localStorage.setItem('varios', datos);
-			llenado_elemento($$(".fondo-blur #contenedor #data"),'base-curso-detalle-nuevotar.html','varios');
+			
+			if ($$(this).attr('name')=='Nuevo Tema'){
+				modal($$(this).attr('name'),null,null,'nuevo_tema');    		
+				llenado_elemento($$(".fondo-blur #contenedor #data"),'base-curso-detalle-nuevotem.html','varios');
+			}
+			if ($$(this).attr('name')=='Nueva Tarea'){
+				modal($$(this).attr('name'),null,null,'nuevo_tarea');    		
+				llenado_elemento($$(".fondo-blur #contenedor #data"),'base-curso-detalle-nuevotar.html','varios');
+			}
+			
 			calendario('modal_fecha');
-	    	}
-	    	if ($$(this).hasClass('panel-curso-tarea') || $$(this).hasClass('timeline-item-inner')){
+	    }
+	    if ($$(this).hasClass('panel-curso-tarea') || $$(this).hasClass('timeline-item-inner')){
 	    		id_tarea=($$(this).attr('id_tarea'));
 		      vconsole('TAREA SELECCIONADA: '+id_tarea);
 		      modal($$(".swiper-slide[name='curso'] .titulo small").html(),id_tarea,'tarea');
 		      llenado_peticion('base-curso-detalle-tareasdet.html','curso_tareasdet_'+id_tarea,'.fondo-blur #contenedor #data');
-	    	}
+	    }
 
 	});
 
-	//modal - animacion al cerrar un modal
-	// ----------------------------------------------------------------------------------------------------------
-	// $$(document).on('click','.fondo-blur #contenedor .boton[crear]',function(){
-	// 	
-	// 	setTimeout(function() {$$('.fondo-blur').remove();}, 400);
-	// });
-	$$(document).on('click','.fondo-blur #contenedor .boton[cerrar]',function(){
-		$$('.fondo-blur').removeClass('jackInTheBox').removeClass('animated').addClass('fadeOutUp animated');
-		setTimeout(function() {$$('.fondo-blur').remove();}, 400);
-	});
+
 	// seleccion de favorito
 	// ----------------------------------------------------------------------------------------------------------
 	$$(document).on('click','.fondo-blur #contenedor .favorito',function(){
@@ -260,7 +258,7 @@ function modal(titulo,id,tipo,tipo_crear){
 	txt+='<div style="background-color:#2196F3;padding:6px;height:26px;color:white;font-size:18px;border-radius:5px 5px 0px 0px;">'+titulo;
 
 	if (tipo){
-		txt+=	'<span class="favorito icon-star-empty" id="'+id+'" tipo="'+tipo+'" style="float:right"></span>';
+		txt+=	'<span class="favorito icon-star-7" id="'+id+'" tipo="'+tipo+'" style="float:right"></span>';
 	}
 
 	txt+=	'</div>';
@@ -354,4 +352,14 @@ function cronograma(storage){
       // $$('.cursos.detalle .contenido').html(compiledTemplate(context_curso));
       return context_curso;
           
+}
+
+function clear_storage(storage){
+	vconsole('cerrando sesion');
+      for(key in localStorage) {
+      	// if (key.indexOf(storage))
+      	// localStorage.removeItem(key);
+      	if (key.indexOf(storage)!==-1)
+      	vconsole(key);
+      }	
 }
